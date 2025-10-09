@@ -1,5 +1,10 @@
 package com.diworksdev.Registration.Action;
 
-public class RegistAction {
+import com.opensymphony.xwork2.ActionSupport;
+
+public class RegistAction extends ActionSupport{
+	public String execute() {
+		return SUCCESS;
+	}
 
 }
