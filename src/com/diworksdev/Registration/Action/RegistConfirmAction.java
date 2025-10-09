@@ -11,6 +11,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String loginUserId;
 	private String loginPassword;
 	private String userName;
+	
 	public Map<String,Object>session;
 	private String errorMessage;
 	
