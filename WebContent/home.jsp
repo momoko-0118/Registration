@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPEhtml>
-<html lang="ja">
+<html>
  <head>
-     <meta charset="UTF-8">
-     <title>演習</title>
-     <link rel="stylesheet"type="text/css"href="./css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Style-Type" content="text/css"/>
+	<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+	<meta http-equiv="imagetoolbar" content="no"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+    <title>演習</title>
+    <link rel="stylesheet"type="text/css"href="./css/style.css">
 </head>
 
 <body>
