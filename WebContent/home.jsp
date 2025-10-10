@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPEhtml>
+<!DOCTYPE html>
 <html>
  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -20,9 +21,9 @@
             <li> <span id="top">トップ</span></li>
             <li>プロフィール</li>
             <li>D.I.Blogについて</li>
-            <li>登録フォーム</li>
+            <li><a href='<s:url action="RegistAction"/>'>登録フォーム</a></li>
             <li>問い合わせ</li>
-            <li><span id="sonota">その他</span></li>
+            <li>その他</li>
         </ul>
     </header>
     

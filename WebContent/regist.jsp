@@ -114,7 +114,7 @@
 								<label>パスワード</label>
 							</td>
 							<td>
-								<input type="text" name="password" value=""/>
+								<input type="password" name="password" value=""/>
 							</td>
 						</tr>
 						<tr>
@@ -212,9 +212,9 @@
 								<label>アカウント権限</label>
 							</td>
 							<td>
-								<select class="dropdown" name="prefecture">
-    	            				<option value="1">一般</option>
-    	            				<option value="2">管理者</option>
+								<select class="dropdown" name="authority">
+    	            				<option value="0">一般</option>
+    	            				<option value="1">管理者</option>
     	            				
  				               </select>
  							</td>

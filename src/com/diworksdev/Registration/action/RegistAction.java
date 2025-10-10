@@ -1,4 +1,4 @@
-package com.diworksdev.Registration.Action;
+package com.diworksdev.Registration.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
