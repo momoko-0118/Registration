@@ -14,12 +14,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String lastNameKana;
 	private String mail;
 	private String password;
-	private int gender;
-	private int postalCode;
+	private Integer gender;
+	private Integer postalCode;
 	private String prefecture;
 	private String address1;
 	private String address2;
-	private int authority;
+	private Integer authority;
 	
 	public Map<String,Object>session;
 	private String errorMessage;
@@ -63,7 +63,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			setErrorMessage("パスワードが未入力です");
 			result=ERROR;
 		}
-		if(postalCode !=0) {
+		
+		if(!(gender.equals(null))) {
+			session.put("gender",gender);
+		}else {
+			setErrorMessage("性別が未入力です");
+		}
+		
+		if(!(postalCode.equals("%7d"))) {
 				session.put("postalCode",postalCode);
 		}else {
 			setErrorMessage("郵便番号が未入力です");
@@ -85,6 +92,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			session.put("address2",address2);
 		}else {
 			setErrorMessage("住所（番地）が未入力です");
+			result=ERROR;
+		}
+		
+		if(!(authority.equals(null))) {
+			session.put("authority",authority);
+		}else {
+			setErrorMessage("権限が未入力です");
 			result=ERROR;
 		}
 		return result;

@@ -14,7 +14,7 @@ create table login_user_transaction(
 	last_name_kana varchar(100),
 	mail varchar(255),
 	password varchar(255),
-	gender int(1)
+	gender int(1),
 	postal_code int(7),
 	prefecture varchar(100),
 	address_1 varchar(100),
@@ -22,5 +22,5 @@ create table login_user_transaction(
 	authority int(1),
 	delete_flg int(1),
 	registered_time datetime,
-	update_time datetime,
+	update_time datetime
 );
