@@ -125,7 +125,7 @@
 								<label>性別</label>
 							</td>
 							<td>
-								<s:property value="gender" escape="false"/>
+								<s:property value="gen" escape="false"/>
 							</td>
 						</tr>
 						<tr id="box">
@@ -167,14 +167,11 @@
 							<td>
 								<s:property value="authority" escape="false"/>
 							</td>
-						</tr>
-						
-						<tr>
-							<td>
-								<s:submit value="登録する"/>
-								<s:submit value="前に戻る"/>
-							</td>
-						</tr>
+						</tr>						
+						<s:submit value="登録する"/>
+					</s:form>
+					<s:form method="post" action="RegistAction">
+						<s:submit value="前に戻る"/>
 					</s:form>
 				</table>
 			</div>
