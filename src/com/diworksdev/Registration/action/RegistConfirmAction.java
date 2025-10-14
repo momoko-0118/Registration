@@ -25,6 +25,18 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	
 	public Map<String,Object>session;
 	private String errorMessage;
+	private String errorFamilyName;
+	private String errorLastName;
+	private String errorFamilyNameKana;
+	private String errorLastNameKana;
+	private String errorMail;
+	private String errorPassword;
+	private String errorGender;
+	private String errorPostalCode;
+	private String errorPrefecture;
+	private String errorAddress1;
+	private String errorAddress2;
+	private String errorAuthority;
 	
 	public String execute() {
 		String result=SUCCESS;
@@ -32,37 +44,37 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		if(!(familyName.equals(""))) {
 			session.put("familyName",familyName);
 		}else {
-			setErrorMessage("名前（姓）が未入力です");
+			setErrorFamilyName("名前（姓）が未入力です");
 			result=ERROR;
 		}
 		if(!(lastName.equals(""))) {
 				session.put("lastName",lastName);
 		}else {
-			setErrorMessage("名前（名）が未入力です");
+			setErrorLastName("名前（名）が未入力です");
 			result=ERROR;
 		}
 		if(!(familyNameKana.equals(""))) {
 			session.put("familyNameKana",familyNameKana);
 		}else {
-			setErrorMessage("カナ（姓）が未入力です");
+			setErrorFamilyNameKana("カナ（姓）が未入力です");
 			result=ERROR;
 		}
 		if(!(lastNameKana.equals(""))) {
 				session.put("lastNameKana",lastNameKana);
 		}else {
-			setErrorMessage("カナ（姓）が未入力です");
+			setErrorLastNameKana("カナ（姓）が未入力です");
 			result=ERROR;
 		}
 		if(!(mail.equals(""))) {
 			session.put("mail",mail);
 		}else {
-			setErrorMessage("メールアドレスが未入力です");
+			setErrorMail("メールアドレスが未入力です");
 			result=ERROR;
 		}
 		if(!(password.equals(""))) {
 				session.put("password",password);
 		}else {
-			setErrorMessage("パスワードが未入力です");
+			setErrorPassword("パスワードが未入力です");
 			result=ERROR;
 		}
 		
@@ -77,32 +89,32 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			session.put("gender",gender);
 			//session.put("gen",this.gen);
 		}else {
-			setErrorMessage("性別が未入力です");
+			setErrorGender("性別が未入力です");
 			result=ERROR;
 		}
 		
 		if(postalCode !=0) {
 				session.put("postalCode",postalCode);
 		}else {
-			setErrorMessage("郵便番号が未入力です");
+			setErrorPostalCode("郵便番号が未入力です");
 			result=ERROR;
 		}
 		if(!(prefecture.equals(""))) {
 			session.put("prefecture",prefecture);
 		}else {
-			setErrorMessage("住所（都道府県）が未入力です");
+			setErrorPrefecture("住所（都道府県）が未入力です");
 			result=ERROR;
 		}
 		if(!(address1.equals(""))) {
 				session.put("address1",address1);
 		}else {
-			setErrorMessage("住所（市区町村）が未入力です");
+			setErrorAddress1("住所（市区町村）が未入力です");
 			result=ERROR;
 		}
 		if(!(address2.equals(""))) {
 			session.put("address2",address2);
 		}else {
-			setErrorMessage("住所（番地）が未入力です");
+			setErrorAddress2("住所（番地）が未入力です");
 			result=ERROR;
 		}
 		
@@ -113,12 +125,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			this.autho="管理者";
 			session.put("authority",authority);
 		}else {
-			setErrorMessage("権限が未入力です");
+			setErrorAuthority("権限が未入力です");
 			result=ERROR;
 		}
 		System.out.println(session);
 		return result;
 	}
+	
 	public String getFamilyName() {
 		return familyName;
 	}
@@ -240,5 +253,101 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage=errorMessage;
+	}
+	
+	public String getErrorFamilyName() {
+		return errorFamilyName;
+	}
+	
+	public void setErrorFamilyName(String errorFamilyName) {
+		this.errorFamilyName=errorFamilyName;
+	}
+	
+	public String getErrorLastName() {
+		return errorLastName;
+	}
+	
+	public void setErrorLastName(String errorLastName) {
+		this.errorLastName=errorLastName;
+	}
+	
+	public String getErrorFamilyNameKana() {
+		return errorFamilyNameKana;
+	}
+	
+	public void setErrorFamilyNameKana(String errorFamilyNameKana) {
+		this.errorFamilyNameKana=errorFamilyNameKana;
+	}
+	
+	public String getErrorLastNameKana() {
+		return errorLastNameKana;
+	}
+	
+	public void setErrorLastNameKana(String errorLastNameKana) {
+		this.errorLastNameKana=errorLastNameKana;
+	}
+	
+	public String getErrorMail() {
+		return errorMail;
+	}
+	
+	public void setErrorMail(String errorMail) {
+		this.errorMail=errorMail;
+	}
+	
+	public String getErrorPassword() {
+		return errorPassword;
+	}
+	
+	public void setErrorPassword(String errorPassword) {
+		this.errorPassword=errorPassword;
+	}
+	
+	public String getErrorGender() {
+		return errorGender;
+	}
+	
+	public void setErrorGender(String errorGender) {
+		this.errorGender=errorGender;
+	}
+	
+	public String getErrorPostalCode() {
+		return errorPostalCode;
+	}
+	
+	public void setErrorPostalCode(String errorPostalCode) {
+		this.errorPostalCode=errorPostalCode;
+	}
+	
+	public String getErrorPrefecture() {
+		return errorPrefecture;
+	}
+	
+	public void setErrorPrefecture(String errorPrefecture) {
+		this.errorPrefecture=errorPrefecture;
+	}
+	
+	public String getErrorAddress1() {
+		return errorAddress1;
+	}
+	
+	public void setErrorAddress1(String errorAddress1) {
+		this.errorAddress1=errorAddress1;
+	}
+	
+	public String getErrorAddress2() {
+		return errorAddress2;
+	}
+	
+	public void setErrorAddress2(String errorAddress2) {
+		this.errorAddress2=errorAddress2;
+	}
+	
+	public String getErrorAuthority() {
+		return errorAuthority;
+	}
+	
+	public void setErrorAuthority(String errorAuthority) {
+		this.errorAuthority=errorAuthority;
 	}
 }

@@ -31,6 +31,10 @@
 			margin:0 auto;
 		}
 		
+		span{
+			color:red;
+		}
+		
 		/*=====ID LAYOUT=====*/
 		#top{
 			width:780px;
@@ -74,18 +78,22 @@
 						<tr>
 							<td>
 								<label>名前（姓）</label><br>
-								<s:if test="errorMessage !=''">
-									<s:property value="errorMessage" escape="false"/>
-								</s:if>
+								<span>
+									<s:if test="errorFamilyName !=''">
+										<s:property value="errorFamilyName" escape="false"/>	
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="familyName" value=""/>
 							</td>
 							<td>
 								<label>名前（名）</label><br>
-								<s:if test="errorMessage !=''">
-									<s:property value="errorMessage" escape="false"/>
-								</s:if>
+								<span>
+									<s:if test="errorLastName !=''">
+										<s:property value="errorLastName" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="lastName" value=""/>
@@ -93,13 +101,23 @@
 						</tr>
 						<tr>
 							<td>
-								<label>カナ（姓）</label>
+								<label>カナ（姓）</label><br>
+								<span>
+									<s:if test="errorLastName !=''">
+										<s:property value="errorLastName" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="familyNameKana" value=""/>
 							</td>
 							<td>
-								<label>カナ（名）</label>
+								<label>カナ（名）</label><br>
+								<span>
+									<s:if test="errorLastNameKana !=''">
+										<s:property value="errorLastNameKana" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="lastNameKana" value=""/>
@@ -107,7 +125,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>メールアドレス</label>
+								<label>メールアドレス</label><br>
+								<span>
+									<s:if test="errorMail !=''">
+										<s:property value="errorMail" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="mail" value=""/>
@@ -115,7 +138,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>パスワード</label>
+								<label>パスワード</label><br>
+								<span>
+									<s:if test="errorPassword !=''">
+										<s:property value="errorPassword" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="password" name="password" value=""/>
@@ -123,7 +151,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>性別</label>
+								<label>性別</label><br>
+								<span>
+									<s:if test="errorGender !=''">
+										<s:property value="errorGender" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="radio" name="gender" value="0" checked="checked">男
@@ -132,7 +165,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>郵便番号</label>
+								<label>郵便番号</label><br>
+								<span>
+									<s:if test="errorPostalCode !=''">
+										<s:property value="errorPostalCode" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="postalCode" value=""/>
@@ -140,7 +178,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>住所（都道府県）</label>
+								<label>住所（都道府県）</label><br>
+								<span>
+									<s:if test="errorPrefecture !=''">
+										<s:property value="errorPrefecture" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<select class="dropdown" name="prefecture">
@@ -197,7 +240,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>住所（市区町村）</label>
+								<label>住所（市区町村）</label><br>
+								<span>
+									<s:if test="errorAddress1 !=''">
+										<s:property value="errorAddress1" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input class="text" name="address1" value=""/>
@@ -205,7 +253,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>住所（番地）</label>
+								<label>住所（番地）</label><br>
+								<span>
+									<s:if test="errorAddress2 !=''">
+										<s:property value="errorAddress2" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<input type="text" name="address2" value=""/>
@@ -213,7 +266,12 @@
 						</tr>
 						<tr>
 							<td>
-								<label>アカウント権限</label>
+								<label>アカウント権限</label><br>
+								<span>
+									<s:if test="errorAuthority !=''">
+										<s:property value="errorAuthority" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 							<td>
 								<select class="dropdown" name="authority">
