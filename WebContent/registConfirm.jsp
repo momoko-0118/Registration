@@ -165,7 +165,7 @@
 								<label>アカウント権限</label>
 							</td>
 							<td>
-								<s:property value="authority" escape="false"/>
+								<s:property value="autho" escape="false"/>
 							</td>
 						</tr>						
 						<s:submit value="登録する"/>

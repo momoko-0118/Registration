@@ -12,8 +12,8 @@ public class RegistCompleteDAO {
 	private DBConnector dbConnector=new DBConnector();
 	private Connection connection=dbConnector.getConnection();	
 	private DateUtil dateUtil=new DateUtil();
-	private String sql="INSERT INTO login_user_transaction(family_name,last_name,family_name_kana,last_name_kana"
-			+ "mail,password,gender,postal_code,prefecture,address_1,address_2,authority,registered_time,update_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private String sql="INSERT INTO login_user_transaction(family_name,last_name,family_name_kana,last_name_kana,"
+			+ "mail,password,gender,postal_code,prefecture,address_1,address_2,authority,registered_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	public void createUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String password,
 			String gender,String postalCode,String prefecture,String address1,String address2,String authority)
@@ -33,7 +33,6 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(11,address2);
 			preparedStatement.setString(12,authority);
 			preparedStatement.setString(13,dateUtil.getDate());
-			preparedStatement.setString(14,dateUtil.getDate());
 			preparedStatement.execute();
 		}catch(Exception e) {
 			e.printStackTrace();

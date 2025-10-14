@@ -14,12 +14,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String lastNameKana;
 	private String mail;
 	private String password;
-	private Integer gender;
-	private Integer postalCode;
+	private int gender;
+	private String gen;
+	private int postalCode;
 	private String prefecture;
 	private String address1;
 	private String address2;
-	private Integer authority;
+	private int authority;
+	private String autho;
 	
 	public Map<String,Object>session;
 	private String errorMessage;
@@ -64,13 +66,22 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			result=ERROR;
 		}
 		
-		if(!(gender.equals(null))) {
+		if(gender==0) {
+			// 男
+			this.gen="男";
 			session.put("gender",gender);
+			//session.put("gen",this.gen);
+		}else if(gender==1) {
+			// 女
+			this.gen="女";
+			session.put("gender",gender);
+			//session.put("gen",this.gen);
 		}else {
 			setErrorMessage("性別が未入力です");
+			result=ERROR;
 		}
 		
-		if(!(postalCode.equals("%7d"))) {
+		if(postalCode !=0) {
 				session.put("postalCode",postalCode);
 		}else {
 			setErrorMessage("郵便番号が未入力です");
@@ -95,12 +106,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			result=ERROR;
 		}
 		
-		if(!(authority.equals(null))) {
+		if(authority==0) {
+			this.autho="一般";
+			session.put("authority",authority);
+		}else if(authority==1){
+			this.autho="管理者";
 			session.put("authority",authority);
 		}else {
 			setErrorMessage("権限が未入力です");
 			result=ERROR;
 		}
+		System.out.println(session);
 		return result;
 	}
 	public String getFamilyName() {
@@ -157,6 +173,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	public void setGender(int gender) {
 		this.gender=gender;
 	}
+	
+	public String getGen() {
+		return gen;
+	}
+	
+	public void setGen(String gen) {
+		this.gen=gen;
+	}
 	public int getPostalCode() {
 		return postalCode;
 	}
@@ -191,6 +215,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	
 	public void setAuthority(int authority) {
 		this.authority=authority;
+	}
+	
+	public String getAutho() {
+		return autho;
+	}
+	
+	public void setAutho(String autho) {
+		this.autho=autho;
 	}
 	
 	public Map<String,Object>getSession(){

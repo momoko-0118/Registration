@@ -30,6 +30,7 @@
 			text-align:center;
 			margin:0 auto;
 		}
+		
 		/*=====ID LAYOUT=====*/
 		#top{
 			width:780px;
@@ -68,20 +69,23 @@
 				<p>UserCreate</p>
 			</div>
 			<div>
-				<s:if test="errorMessage !=''">
-					<s:property value="errorMessage" escape="false"/>
-				</s:if>
 				<table>
 					<s:form action="RegistConfirmAction">
 						<tr>
 							<td>
-								<label>名前（姓）</label>
+								<label>名前（姓）</label><br>
+								<s:if test="errorMessage !=''">
+									<s:property value="errorMessage" escape="false"/>
+								</s:if>
 							</td>
 							<td>
 								<input type="text" name="familyName" value=""/>
 							</td>
 							<td>
-								<label>名前（名）</label>
+								<label>名前（名）</label><br>
+								<s:if test="errorMessage !=''">
+									<s:property value="errorMessage" escape="false"/>
+								</s:if>
 							</td>
 							<td>
 								<input type="text" name="lastName" value=""/>
@@ -140,7 +144,7 @@
 							</td>
 							<td>
 								<select class="dropdown" name="prefecture">
- 									<option value="" selected>選択してください</option>
+ 									<option value="" selected></option>
     								<option value="北海道">北海道</option>
    									<option value="青森県">青森県</option>
     								<option value="岩手県">岩手県</option>
