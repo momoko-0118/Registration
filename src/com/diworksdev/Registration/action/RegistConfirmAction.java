@@ -1,5 +1,6 @@
 package com.diworksdev.Registration.action;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -37,6 +38,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String errorAddress1;
 	private String errorAddress2;
 	private String errorAuthority;
+	
+	private String[] pre = {"北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島",
+			"茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川","新潟", "富山",
+			"石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知", "三重",
+	        "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山","鳥取", "島根", "岡山",
+	        "広島", "山口", "徳島", "香川", "愛媛", "高知",
+	        "福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"};
 	
 	public String execute() {
 		String result=SUCCESS;
@@ -99,7 +107,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			setErrorPostalCode("郵便番号が未入力です");
 			result=ERROR;
 		}
-		if(!(prefecture.equals(""))) {
+		if(prefecture !=null && Arrays.asList(pre).contains(prefecture)) {
 			session.put("prefecture",prefecture);
 		}else {
 			setErrorPrefecture("住所（都道府県）が未入力です");
@@ -349,5 +357,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	
 	public void setErrorAuthority(String errorAuthority) {
 		this.errorAuthority=errorAuthority;
+	}
+	
+	public String[] getPre() {
+		return pre;
+	}
+	
+	public void setPre(String[] pre) {
+		this.pre=pre;
 	}
 }
