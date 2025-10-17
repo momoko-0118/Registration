@@ -30,6 +30,10 @@
 			text-align:center;
 			margin:0 auto;
 		}
+		
+		h3{
+			font-size:50px;
+		}
 		/*=====ID LAYOUT=====*/
 		#top{
 			width:780px;
@@ -68,9 +72,11 @@
 				<p>UserCreateComplete</p>
 			</div>
 			<div>
-				<h3>ユーザーの登録が完了いたしました</h3>
+				<h3>登録完了しました</h3>
 				<div>
-					<a href='<s:url action="RegistAction"/>'>最初のページへ</a>
+					<s:form method="post" action="GoHomeAction">
+						<s:submit value="最初のページへ"/>
+					</s:form>
 				</div>
 			</div>
 		</div>

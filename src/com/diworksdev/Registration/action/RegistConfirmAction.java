@@ -15,6 +15,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String lastNameKana;
 	private String mail;
 	private String password;
+	private String password2;
 	private int gender;
 	private String gen;
 	private int postalCode;
@@ -49,7 +50,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	public String execute() {
 		String result=SUCCESS;
 		
-		if(!(familyName.equals(""))) {
+		if(!(familyName.equals("")) || familyName.length() > 10) {
 			session.put("familyName",familyName);
 		}else {
 			setErrorFamilyName("名前（姓）が未入力です");
@@ -79,11 +80,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			setErrorMail("メールアドレスが未入力です");
 			result=ERROR;
 		}
-		if(!(password.equals(""))) {
-				session.put("password",password);
-		}else {
-			setErrorPassword("パスワードが未入力です");
-			result=ERROR;
+		
+		if(!(password.equals(""))) {	
+			session.put("password", password); 
+			this.password2=String.format("%"+password.length()+"s","").replace(' ', '●');
+			System.out.println(password.length());
+			System.out.println(String.format("%"+password.length()+"s",""));
+			session.put("password2", password2);
+			System.out.println(password2);
+		} else {
+		    setErrorPassword("パスワードが未入力です");
+		    result = ERROR;
 		}
 		
 		if(gender==0) {
@@ -187,6 +194,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	public void setPassword(String password) {
 		this.password=password;
 	}
+	
+	public String getPassword2() {
+		return password2;
+	}
+	
+	public void setPassword2(String password2) {
+		this.password2=password2;
+	}
+	
 	public int getGender() {
 		return gender;
 	}
@@ -202,8 +218,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	public void setGen(String gen) {
 		this.gen=gen;
 	}
-	public int getPostalCode() {
-		return postalCode;
+	
+	public String getPostalCode() {
+		return String.format("%07d", postalCode);
 	}
 	
 	public void setPostalCode(int postalCode) {

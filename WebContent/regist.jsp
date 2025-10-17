@@ -85,7 +85,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="familyName" value="" maxlength="10"/>
+								<input type="text" name="familyName" value="" maxlength="10" 
+								pattern="[\u4E00-\u9FFF\u3005-\u3007\u3041-\u3096]*"/>
 							</td>
 							<td>
 								<label>名前（名）</label><br>
@@ -96,7 +97,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="lastName" value="" maxlength="10"/>
+								<input type="text" name="lastName" value="" maxlength="10" 
+								pattern="[\u4E00-\u9FFF\u3005-\u3007\u3041-\u3096]*"/>
 							</td>
 						</tr>
 						<tr>
@@ -109,7 +111,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="familyNameKana" value="" maxlength="10"/>
+								<input type="text" name="familyNameKana" value="" maxlength="10" 
+								pattern="[\u30A1-\u30FA]*"/>
 							</td>
 							<td>
 								<label>カナ（名）</label><br>
@@ -120,7 +123,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="lastNameKana" value="" maxlength="10"/>
+								<input type="text" name="lastNameKana" value="" maxlength="10" 
+								pattern="[\u30A1-\u30FA]*"/>
 							</td>
 						</tr>
 						<tr>
@@ -146,7 +150,7 @@
 								</span>
 							</td>
 							<td>
-								<input type="password" name="password" value="" maxlength="10"/>
+								<input type="password" name="password" value="" maxlength="10" pattern="[a-zA-Z0-9]*"/>
 							</td>
 						</tr>
 						<tr>
@@ -173,7 +177,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="number" name="postalCode" value="" maxlength="7"/>
+								<input type="text" name="postalCode" value="" maxlength="7" 
+								pattern="[0-9]*"/>
 							</td>
 						</tr>
 						<tr>
@@ -212,7 +217,8 @@
 								</span>
 							</td>
 							<td>
-								<input class="text" name="address1" value="" maxlength="10"/>
+								<input class="text" name="address1" value="" maxlength="10" 
+								pattern="[\u4E00-\u9FFF\u3005-\u3007\u3041-\u3096\u30A1-\u30FA0-9\sー]*"/>
 							</td>
 						</tr>
 						<tr>
@@ -225,7 +231,8 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="address2" value="" maxlength="100"/>
+								<input type="text" name="address2" value="" maxlength="100"
+								pattern="[-\u4E00-\u9FFF\u3005-\u3007\u3041-\u3096\u30A1-\u30FA0-9０-９\sー]*"/>
 							</td>
 						</tr>
 						<tr>

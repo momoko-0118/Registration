@@ -117,7 +117,7 @@
 								<label>パスワード</label>
 							</td>
 							<td>
-								<s:property value="password" escape="false"/>
+								<s:property value="password2" escape="false"/>
 							</td>
 						</tr>
 						<tr id="box">
@@ -171,7 +171,7 @@
 						<s:submit value="登録する"/>
 					</s:form>
 					<s:form method="post" action="RegistAction">
-						<s:submit value="前に戻る"/>
+						<input type="button" value="前に戻る" onclick="history.back()"/>
 					</s:form>
 				</table>
 			</div>
