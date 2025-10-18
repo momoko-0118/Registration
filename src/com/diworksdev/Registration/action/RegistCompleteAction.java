@@ -21,7 +21,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 				session.get("familyNameKana").toString(),
 				session.get("lastNameKana").toString(),
 				session.get("mail").toString(),
-				session.get("password").toString(),
+				session.get("sha256Byte").toString(),
 				session.get("gender").toString(),
 				session.get("postalCode").toString(),
 				session.get("prefecture").toString(),

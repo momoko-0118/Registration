@@ -1,5 +1,7 @@
 package com.diworksdev.Registration.action;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -46,9 +48,21 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	        "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山","鳥取", "島根", "岡山",
 	        "広島", "山口", "徳島", "香川", "愛媛", "高知",
 	        "福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"};
-	
 	public String execute() {
 		String result=SUCCESS;
+		
+		MessageDigest sha256;
+		try {
+			sha256 = MessageDigest.getInstance("SHA-256");
+			byte[] sha256Byte = sha256.digest("password".getBytes());			
+			System.out.println(sha256.digest("password".getBytes()));
+			System.out.println(sha256Byte);
+			session.put("sha256Byte",sha256Byte);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
 		
 		if(!(familyName.equals("")) || familyName.length() > 10) {
 			session.put("familyName",familyName);
@@ -145,6 +159,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		}
 		System.out.println(session);
 		return result;
+	}
+	
+	public String getSha256Byte() {
+		return getSha256Byte();
+	}
+	
+	public void setSha256Byte(String sha256Byte) {
 	}
 	
 	public String getFamilyName() {
