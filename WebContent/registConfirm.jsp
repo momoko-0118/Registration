@@ -31,6 +31,9 @@
 			text-align:center;
 			margin:0 auto;
 		}
+		span{
+			color:red;
+		}
 		/*=====ID LAYOUT=====*/
 		#top{
 			width:780px;
@@ -166,6 +169,14 @@
 							</td>
 							<td>
 								<s:property value="autho" escape="false"/>
+							</td>
+							<td>
+							<br>
+								<span>
+									<s:if test="errorMessage !=''">
+										<s:property value="errorMessage" escape="false"/>
+									</s:if>
+								</span>
 							</td>
 						</tr>						
 						<s:submit value="登録する"/>

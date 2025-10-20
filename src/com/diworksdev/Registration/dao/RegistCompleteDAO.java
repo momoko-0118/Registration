@@ -2,7 +2,6 @@ package com.diworksdev.Registration.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import com.diworksdev.Registration.util.DBConnector;
 import com.diworksdev.Registration.util.DateUtil;
@@ -15,9 +14,8 @@ public class RegistCompleteDAO {
 	private String sql="INSERT INTO login_user_transaction(family_name,last_name,family_name_kana,last_name_kana,"
 			+ "mail,password,gender,postal_code,prefecture,address_1,address_2,authority,registered_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-	public void createUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String sha256Byte,
-			String gender,String postalCode,String prefecture,String address1,String address2,String authority)
-	throws SQLException{				
+	public boolean createUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String sha256Byte,
+			String gender,String postalCode,String prefecture,String address1,String address2,String authority) {
 		try {
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1,familyName);
@@ -34,10 +32,11 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(12,authority);
 			preparedStatement.setString(13,dateUtil.getDate());
 			preparedStatement.execute();
+			
+			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			connection.close();
+			return false;
 		}
 	}
 
