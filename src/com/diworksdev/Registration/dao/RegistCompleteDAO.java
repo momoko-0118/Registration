@@ -14,7 +14,7 @@ public class RegistCompleteDAO {
 	private String sql="INSERT INTO login_user_transaction(family_name,last_name,family_name_kana,last_name_kana,"
 			+ "mail,password,gender,postal_code,prefecture,address_1,address_2,authority,registered_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-	public boolean createUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String sha256Byte,
+	public boolean createUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String password,
 			String gender,String postalCode,String prefecture,String address1,String address2,String authority) {
 		try {
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
@@ -23,7 +23,7 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(3,familyNameKana);
 			preparedStatement.setString(4,lastNameKana);
 			preparedStatement.setString(5,mail);
-			preparedStatement.setString(6,sha256Byte);
+			preparedStatement.setString(6,password);
 			preparedStatement.setString(7,gender);
 			preparedStatement.setString(8,postalCode);
 			preparedStatement.setString(9,prefecture);

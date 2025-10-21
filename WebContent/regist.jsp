@@ -144,13 +144,13 @@
 							<td>
 								<label>パスワード</label><br>
 								<span>
-									<s:if test="errorPassword !=''">
-										<s:property value="errorPassword" escape="false"/>
+									<s:if test="errorPass !=''">
+										<s:property value="errorPass" escape="false"/>
 									</s:if>
 								</span>
 							</td>
 							<td>
-								<input type="password" name="password" value="" maxlength="10" pattern="[a-zA-Z0-9]*"/>
+								<input type="password" name="pass" value="" maxlength="10" pattern="[a-zA-Z0-9]*"/>
 							</td>
 						</tr>
 						<tr>

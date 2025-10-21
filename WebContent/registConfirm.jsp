@@ -120,7 +120,7 @@
 								<label>パスワード</label>
 							</td>
 							<td>
-								<s:property value="password2" escape="false"/>
+								<s:property value="pass2" escape="false"/>
 							</td>
 						</tr>
 						<tr id="box">

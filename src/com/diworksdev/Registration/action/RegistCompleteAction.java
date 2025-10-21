@@ -22,10 +22,10 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 		MessageDigest sha256;
 		try {
 			sha256 = MessageDigest.getInstance("SHA-256");
-			byte[] sha256Byte = sha256.digest("password".getBytes());			
-			System.out.println(sha256.digest("password".getBytes()));
-			System.out.println(sha256Byte);
-			session.put("sha256Byte",sha256Byte);
+			byte[] password = sha256.digest("pass".getBytes());			
+			System.out.println(sha256.digest("pass".getBytes()));
+			System.out.println(password);
+			session.put("password",password);
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -36,7 +36,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 				session.get("familyNameKana").toString(),
 				session.get("lastNameKana").toString(),
 				session.get("mail").toString(),
-				session.get("sha256Byte").toString(),
+				session.get("password").toString(),
 				session.get("gender").toString(),
 				session.get("postalCode").toString(),
 				session.get("prefecture").toString(),
@@ -46,16 +46,16 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 		String result = SUCCESS;
 		if(!data) {
 			result=ERROR;
-			setErrorMessage("エラーが発生し畳めアカウント登録できません。");
+			setErrorMessage("エラーが発生したためアカウント登録できません。");
 		}
 		return result;				
 	}
 	
-	public String getSha256Byte() {
-		return getSha256Byte();
+	public String getPassword() {
+		return getPassword();
 	}
 	
-	public void setSha256Byte(String sha256Byte) {
+	public void setPassword(String password) {
 	}
 	
 	public String getErrorMessage() {

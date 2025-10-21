@@ -14,8 +14,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String familyNameKana;
 	private String lastNameKana;
 	private String mail;
-	private String password;
-	private String password2;
+	private String pass;
+	private String pass2;
 	private int gender;
 	private String gen;
 	private int postalCode;
@@ -32,7 +32,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String errorFamilyNameKana;
 	private String errorLastNameKana;
 	private String errorMail;
-	private String errorPassword;
+	private String errorPass;
 	private String errorGender;
 	private String errorPostalCode;
 	private String errorPrefecture;
@@ -80,15 +80,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			result=ERROR;
 		}
 		
-		if(!(password.equals(""))) {	
-			session.put("password", password); 
-			this.password2=String.format("%"+password.length()+"s","").replace(' ', '●');
-			System.out.println(password.length());
-			System.out.println(String.format("%"+password.length()+"s",""));
-			session.put("password2", password2);
-			System.out.println(password2);
+		if(!(pass.equals(""))) {	
+			session.put("pass", pass); 
+			this.pass2=String.format("%"+pass.length()+"s","").replace(' ', '●');
+			System.out.println(pass.length());
+			System.out.println(String.format("%"+pass.length()+"s",""));
+			session.put("pass2", pass2);
+			System.out.println(pass2);
 		} else {
-		    setErrorPassword("パスワードが未入力です");
+		    setErrorPass("パスワードが未入力です");
 		    result = ERROR;
 		}
 		
@@ -186,20 +186,20 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		this.mail=mail;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 	
-	public void setPassword(String password) {
-		this.password=password;
+	public void setPass(String pass) {
+		this.pass=pass;
 	}
 	
-	public String getPassword2() {
-		return password2;
+	public String getPass2() {
+		return pass2;
 	}
 	
-	public void setPassword2(String password2) {
-		this.password2=password2;
+	public void setPass2(String pass2) {
+		this.pass2=pass2;
 	}
 	
 	public int getGender() {
@@ -319,12 +319,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		this.errorMail=errorMail;
 	}
 	
-	public String getErrorPassword() {
-		return errorPassword;
+	public String getErrorPass() {
+		return errorPass;
 	}
 	
-	public void setErrorPassword(String errorPassword) {
-		this.errorPassword=errorPassword;
+	public void setErrorPass(String errorPass) {
+		this.errorPass=errorPass;
 	}
 	
 	public String getErrorGender() {
