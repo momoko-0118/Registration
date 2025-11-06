@@ -15,7 +15,7 @@ create table login_user_transaction(
 	mail varchar(255),
 	password varchar(255),
 	gender int(1),
-	postal_code int(7),
+	postal_code varchar(7),
 	prefecture varchar(100),
 	address_1 varchar(100),
 	address_2 varchar(255),

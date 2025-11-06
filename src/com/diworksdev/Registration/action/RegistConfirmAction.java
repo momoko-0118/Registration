@@ -18,12 +18,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	private String pass2;
 	private int gender;
 	private String gen;
-	private int postalCode;
+	private String postalCode;
 	private String prefecture;
 	private String address1;
 	private String address2;
 	private int authority;
 	private String autho;
+	private int deleteFlg;
 	
 	public Map<String,Object>session;
 	private String errorMessage;
@@ -49,7 +50,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	public String execute() {
 		String result=SUCCESS;
 		
-		if(!(familyName.equals("")) || familyName.length() > 10) {
+		if(!(familyName.equals(""))) {
 			session.put("familyName",familyName);
 		}else {
 			setErrorFamilyName("名前（姓）が未入力です");
@@ -107,7 +108,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			result=ERROR;
 		}
 		
-		if(postalCode !=0) {
+		if(!(postalCode.equals(""))) {
 				session.put("postalCode",postalCode);
 		}else {
 			setErrorPostalCode("郵便番号が未入力です");
@@ -130,8 +131,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		}else {
 			setErrorAddress2("住所（番地）が未入力です");
 			result=ERROR;
-		}
-		
+		}			
 		if(authority==0) {
 			this.autho="一般";
 			session.put("authority",authority);
@@ -143,6 +143,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			result=ERROR;
 		}
 		System.out.println(session);
+		deleteFlg=0;
+		session.put("deleteFlg",deleteFlg);
 		return result;
 	}
 	
@@ -219,10 +221,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	}
 	
 	public String getPostalCode() {
-		return String.format("%07d", postalCode);
+		return postalCode;
 	}
 	
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode=postalCode;
 	}
 	public String getPrefecture() {
@@ -260,6 +262,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 	
 	public void setAutho(String autho) {
 		this.autho=autho;
+	}
+	
+	public int getDeleteFlg() {
+		return deleteFlg;
+	}
+	
+	public void setDeleteFlg(int deleteFlg) {
+		this.deleteFlg=deleteFlg;
 	}
 	
 	public Map<String,Object>getSession(){

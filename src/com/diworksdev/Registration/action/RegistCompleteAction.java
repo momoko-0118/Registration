@@ -42,7 +42,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 				session.get("prefecture").toString(),
 				session.get("address1").toString(),
 				session.get("address2").toString(),
-				session.get("authority").toString());
+				session.get("authority").toString(),
+				session.get("deleteFlg").toString());
 		String result = SUCCESS;
 		if(!data) {
 			result=ERROR;
