@@ -163,7 +163,7 @@
 								</span>
 							</td>
 							<td>
-								<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>>男
+								<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>checked>男
 								<input type="radio" name="gender" value="1" <s:if test="gender == 1">checked="checked"</s:if>>女
 							</td>
 						</tr>
@@ -177,7 +177,7 @@
 								</span>
 							</td>
 							<td>
-								<input type="text" name="postalCode" value="<s:property value='%{postalCode}'/>" maxlength="7" 
+								<input type="text" name="postalCode" value="<s:property value='%{postalCode}'/>" maxlength="7" minlength="7" 
 								pattern="[0-9]*"/>
 							</td>
 						</tr>
@@ -201,7 +201,7 @@
 									'徳島','香川','愛媛','高知',
 									'福岡','佐賀','長崎','熊本','大分','宮崎','鹿児島','沖縄'
 								}"/>
-								<s:select class="dropdown" name="prefecture" list="%{pre}" value="%{prefecture}" headKey="" headerValue="">								
+								<s:select class="dropdown" name="prefecture" list="%{pre}" value="%{prefecture}" headerKey="" headerValue="">								
 								</s:select>												
 							</td>
 						</tr>
