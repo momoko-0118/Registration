@@ -24,3 +24,43 @@ create table login_user_transaction(
 	registered_time datetime,
 	update_time datetime
 );
+
+drop table if exists gender_info_transaction;
+
+create table gender_info_transaction(
+	id int not null primary key,
+	user_gender varchar(1),
+	insert_date datetime,
+	update_date datetime
+);
+
+drop table if exists authority_info_transaction;
+
+create table authority_info_transaction(
+	id int not null primary key,
+	user_authority varchar(3),
+	insert_date datetime,
+	update_date datetime
+);
+
+drop table if exists flg_info_transaction;
+
+create table flg_info_transaction(
+	id int not null primary key,
+	flg varchar(2),
+	insert_date datetime,
+	update_date datetime
+);
+
+INSERT INTO gender_info_transaction(id,user_gender)
+VALUES(0,"男");
+INSERT INTO gender_info_transaction(id,user_gender)
+VALUES(1,"女");
+INSERT INTO authority_info_transaction(id,user_authority)
+VALUES(0,"一般");
+INSERT INTO authority_info_transaction(id,user_authority)
+VALUES(1,"管理者");
+INSERT INTO flg_info_transaction(id,flg)
+VALUES(0,"有効");
+INSERT INTO flg_info_transaction(id,flg)
+VALUES(1,"無効");
