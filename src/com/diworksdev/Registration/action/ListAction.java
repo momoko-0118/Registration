@@ -17,6 +17,7 @@ public class ListAction extends ActionSupport {
     public String execute() {
         try {
             users = listDAO.getAllList();
+            System.out.println(users.get(0).id);
             return SUCCESS;
         } catch (SQLException e) {
             e.printStackTrace();

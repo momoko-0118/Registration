@@ -37,14 +37,24 @@ public class ListDAO {
 				dto.setFamilyNameKana(resultSet.getString("family_name_kana"));
 				dto.setLastNameKana(resultSet.getString("last_name_kana"));	
 				dto.setMail(resultSet.getString("mail"));
-				dto.setGender(resultSet.getString("gender"));
-				dto.setAuthority(resultSet.getString("authority"));
-				dto.setDeleteFlg(resultSet.getString("delete_flg"));
+				dto.setGender(resultSet.getString("user_gender"));
+				dto.setAuthority(resultSet.getString("user_authority"));
+				dto.setDeleteFlg(resultSet.getString("flg"));
 				dto.setRegistered_time(resultSet.getString("registered_time"));
 				dto.setUpdate_time(resultSet.getString("update_time"));
 				list.add(dto);
+				System.out.println(dto.getFamilyName());
+				System.out.println(dto.getLastName());
+				System.out.println(dto.getFamilyNameKana());
+				System.out.println(dto.getLastNameKana());
+				System.out.println(dto.getMail());
+				System.out.println(dto.getGender());
+				System.out.println(dto.getAuthority());
+				System.out.println(dto.getDeleteFlg());
+				System.out.println(dto.getRegistered_time());
+				System.out.println(dto.getUpdate_time());
 			}
-		}catch(Exception e) {
+			}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 				connection.close();

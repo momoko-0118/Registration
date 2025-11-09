@@ -62,6 +62,16 @@
 				display:inline-block;
 				text-align:right;
 			}
+			
+			.button{
+			    display: block;
+ 			    padding: 1px 0;		
+			    margin: auto;
+			    background: gray;
+			    color: #FFF;
+			    text-decoration: none;
+			    text-align: center;
+			}
 		</style>	
 	</head>
 
@@ -75,10 +85,7 @@
 				<p>List</p>
 			</div>
 			<div>
-				<s:if test="users == null || users.size() == 0">
-					<h3>情報はありません。</h3>
-				</s:if>
-				<s:else>
+				<s:if test="users">
 					<h3>アカウント一覧画面</h3>
 					<table border="1">
 						<tr>
@@ -108,11 +115,14 @@
 								<td><s:property value="deleteFlg"/></td>
 								<td><s:property value="registered_time"/></td>
 								<td><s:property value="update_time"/></td>
-								<td><s:submit value="更新"/></td>
-								<td><s:submit value="削除"/></td>
+								<td><a class="button" href=''>更新</a></td>
+								<td><a class="button" href=''>削除</a></td>
 							</tr>
 						</s:iterator>
 					</table>
+				</s:if>
+				<s:else>
+					<h3>情報はありません。</h3>
 				</s:else>
 				<s:if test="session.message !=null">
 					<h3><s:property value="message"/></h3>
