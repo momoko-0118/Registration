@@ -63,15 +63,7 @@
 				text-align:right;
 			}
 			
-			.button{
-			    display: block;
- 			    padding: 1px 0;		
-			    margin: auto;
-			    background: gray;
-			    color: #FFF;
-			    text-decoration: none;
-			    text-align: center;
-			}
+			
 		</style>	
 	</head>
 
@@ -115,8 +107,8 @@
 								<td><s:property value="deleteFlg"/></td>
 								<td><s:property value="registered_time"/></td>
 								<td><s:property value="update_time"/></td>
-								<td><a class="button" href=''>更新</a></td>
-								<td><a class="button" href=''>削除</a></td>
+								<td><button class="button">更新</button></td>
+								<td><button class="button">削除</button></td>
 							</tr>
 						</s:iterator>
 					</table>
