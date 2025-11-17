@@ -107,8 +107,18 @@
 								<td><s:property value="deleteFlg"/></td>
 								<td><s:property value="registered_time"/></td>
 								<td><s:property value="update_time"/></td>
-								<td><button class="button">更新</button></td>
-								<td><button class="button">削除</button></td>
+								<td>
+									<s:form action="UserUpdateAction">
+										<input type="hidden" value="<s:property value='id'/>" />
+										<s:submit value="更新"/>
+									</s:form>
+								</td>
+								<td>
+									<s:form action="UserDeleteAction" value="id">
+										<input type="hidden" value="<s:property value='id'/>" />
+										<s:submit value="削除"/>
+									</s:form>
+								</td>
 							</tr>
 						</s:iterator>
 					</table>

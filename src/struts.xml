@@ -39,5 +39,42 @@
 		method="execute">
 			<result name="success">list.jsp</result>
 		</action>
+		
+		<action name="UserUpdateAction" 
+		class="com.diworksdev.Registration.action.UserUpdateAction" 
+		method="execute">
+			<result name="success">userUpdate.jsp</result>
+		</action>
+		
+		<action name="UserUpdateConfirmAction" 
+		class="com.diworksdev.Registration.action.UserUpdateConfirmAction" 
+		method="execute">
+			<result name="success">userUpdateConfirm.jsp</result>
+		</action>
+		
+		<action name="UserUpdateCompleteAction" 
+		class="com.diworksdev.Registration.action.UserUpdateCompleteAction" 
+		method="execute">
+			<result name="success">userUpdateComplete.jsp</result>
+		</action>
+		
+		<action name="UserDeleteAction" 
+		class="com.diworksdev.Registration.action.UserDeleteAction" 
+		method="execute">
+			<result name="success">userDelete.jsp</result>
+		</action>
+		
+		<action name="UserDeleteConfirmAction" 
+		class="com.diworksdev.Registration.action.UserDeleteConfirmAction" 
+		method="execute">
+			<result name="success">userDeleteConfirm.jsp</result>
+		</action>
+		
+		<action name="UserDeleteCompleteAction" 
+		class="com.diworksdev.Registration.action.UserDeleteCompleteAction" 
+		method="execute">
+			<result name="success">userDeleteComplete.jsp</result>
+		</action>
+		
 	</package>
 </struts>
