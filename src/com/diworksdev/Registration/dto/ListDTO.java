@@ -8,12 +8,16 @@ public class ListDTO {
 	public String familyNameKana;
 	public String lastNameKana;
 	public String mail;
+	public String password;
 	public String gender;
+	public String postal_code;
+	public String prefecture;
+	public String address_1;
+	public String address_2;
 	public String authority;
 	public String deleteFlg;
 	public String registered_time;
 	public String update_time;
-	
 	
 	public String getId() {
 		return this.id;
@@ -63,12 +67,52 @@ public class ListDTO {
 		this.mail=mail;
 	}
 	
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public void setPassword(String password) {
+		this.password=password;
+	}
+	
 	public String getGender() {
 		return this.gender;
 	}
 	
 	public void setGender(String gender) {
 		this.gender=gender;
+	}
+	
+	public String getPostal_Code() {
+		return this.postal_code;
+	}
+	
+	public void setPostal_Code(String postal_code) {
+		this.postal_code=postal_code;
+	}
+	
+	public String getPrefecture() {
+		return this.prefecture;
+	}
+	
+	public void setPrefecture(String prefecture) {
+		this.prefecture=prefecture;
+	}
+	
+	public String getAddress_1() {
+		return this.address_1;
+	}
+	
+	public void setAddress_1(String address_1) {
+		this.address_1=address_1;
+	}
+	
+	public String getAddress_2() {
+		return this.address_2;
+	}
+	
+	public void setAddress_2(String address_2) {
+		this.address_2=address_2;
 	}
 	
 	public String getAuthority() {

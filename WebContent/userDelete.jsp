@@ -12,7 +12,7 @@
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<meta name="description" content=""/>
 		<meta name="keywords" content=""/>
-		<title>List画面</title>
+		<title>UserDelete画面</title>
 		
 		<style type="text/css">
 		/*=======TAG LAYOUT=======*/
@@ -77,121 +77,123 @@
 				<p>UserDelete</p>
 			</div>
 			<div>
-				<h3>アカウント削除画面</h3>
-				<table>
-					<s:form method="post" action="UserDeleteAction">
-						<s:iterator value="users">
-							<tr id="box">
-								<td>
-									<label>名前（姓）</label>
-								</td>
-								<td>
-									<s:property value="familyName" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>名前（名）</label>
-								</td>
-								<td>
-									<s:property value="lastName" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>カナ（姓）</label>
-								</td>
-								<td>
-									<s:property value="familyNameKana" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>カナ（名）</label>
-								</td>
-								<td>
-									<s:property value="lastNameKana" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>メールアドレス</label>
-								</td>
-								<td>
-									<s:property value="mail" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>パスワード</label>
-								</td>
-								<td>
-									<s:property value="pass2" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>性別</label>
-								</td>
-								<td>
-									<s:property value="gen" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>郵便番号</label>
-								</td>
-								<td>
-									<s:property value="postalCode" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>住所（都道府県）</label>
-								</td>
-								<td>
-									<s:property value="prefecture" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>住所（市区町村）</label>
-								</td>
-								<td>
-									<s:property value="address1" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>住所（番地）</label>
-								</td>
-								<td>
-									<s:property value="address2" escape="false"/>
-								</td>
-							</tr>
-							<tr id="box">
-								<td>
-									<label>アカウント権限</label>
-								</td>
-								<td>
-									<s:property value="autho" escape="false"/>
-								</td>
-								<td>
-								<br>
-									<span>
-										<s:if test="errorMessage !=''">
-											<s:property value="errorMessage" escape="false"/>
-										</s:if>
-									</span>
-								</td>
-							</tr>	
-						</s:iterator>					
-						<s:submit value="登録する"/>
-					</s:form>
-					<s:form method="post" action="RegistAction">
-						<input type="button" value="前に戻る" onclick="history.back()"/>
-					</s:form>
-				</table>
+				<s:if test="user">
+					<h3>アカウント削除画面</h3>
+					<table>
+						<s:form method="post" action="UserDeleteConfirmAction">
+							<s:iterator value="user">
+								<tr id="box">
+									<td>
+										<label>名前（姓）</label>
+									</td>
+									<td>
+										<s:property value="familyName" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>名前（名）</label>
+									</td>
+									<td>
+										<s:property value="lastName" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>カナ（姓）</label>
+									</td>
+									<td>
+										<s:property value="familyNameKana" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>カナ（名）</label>
+									</td>
+									<td>
+										<s:property value="lastNameKana" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>メールアドレス</label>
+									</td>
+									<td>
+										<s:property value="mail" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>パスワード</label>
+									</td>
+									<td>
+										<s:property value="password" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>性別</label>
+									</td>
+									<td>
+										<s:property value="gender" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>郵便番号</label>
+									</td>
+									<td>
+										<s:property value="postal_code" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>住所（都道府県）</label>
+									</td>
+									<td>
+										<s:property value="prefecture" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>住所（市区町村）</label>
+									</td>
+									<td>
+										<s:property value="address_1" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>住所（番地）</label>
+									</td>
+									<td>
+										<s:property value="address_2" escape="false"/>
+									</td>
+								</tr>
+								<tr id="box">
+									<td>
+										<label>アカウント権限</label>
+									</td>
+									<td>
+										<s:property value="authority" escape="false"/>
+									</td>
+									<td>
+									<br>
+										<span>
+											<s:if test="errorMessage !=''">
+												<s:property value="errorMessage" escape="false"/>
+											</s:if>
+										</span>
+									</td>
+								</tr>	
+							</s:iterator>					
+							<s:submit value="確認する"/>
+						</s:form>
+						<s:form method="post" action="RegistAction">
+							<input type="button" value="前に戻る"/>
+						</s:form>
+					</table>
+				</s:if>
 			</div>
 		</div>
 		<div id="footer">

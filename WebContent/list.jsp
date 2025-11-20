@@ -115,7 +115,7 @@
 								</td>
 								<td>
 									<s:form action="UserDeleteAction" value="id">
-										<input type="hidden" value="<s:property value='id'/>" />
+										<input type="hidden" name="id" value="<s:property value='id'/>" />
 										<s:submit value="削除"/>
 									</s:form>
 								</td>
