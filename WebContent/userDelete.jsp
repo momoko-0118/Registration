@@ -186,11 +186,12 @@
 										</span>
 									</td>
 								</tr>	
-							</s:iterator>					
+							</s:iterator>	
+							<input type="hidden" name="id" value="<s:property value='id'/>" />				
 							<s:submit value="確認する"/>
 						</s:form>
-						<s:form method="post" action="RegistAction">
-							<input type="button" value="前に戻る"/>
+						<s:form method="post" action="ListAction">
+							<s:submit value="前に戻る"/>
 						</s:form>
 					</table>
 				</s:if>

@@ -74,15 +74,23 @@
 		</div>
 		<div id="main">
 			<div id="top">
-				<p>UserDelete</p>
+				<p>UserDeleteConfirm</p>
 			</div>
 			<div>
 				<h3>本当に削除してよろしいですか？</h3>
 			</div>
+							<br>
+								<span>
+									<s:if test="message !=''">
+										<s:property value="message" escape="false"/>
+									</s:if>
+								</span>
 			<s:form method="post" action="UserDeleteAction">
+				<input type="hidden" name="id" value="<s:property value='id'/>" />
 				<s:submit value="前に戻る"/>
 			</s:form>					
 			<s:form method="post" action="UserDeleteCompleteAction">
+				<input type="hidden" name="id" value="<s:property value='id'/>" />
 				<s:submit value="削除する"/>
 			</s:form>
 		</div>

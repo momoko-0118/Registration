@@ -14,10 +14,9 @@ public class UserDeleteAction extends ActionSupport {
 
     @Override
     public String execute() {
-    	System.out.println(id);
         try {
             user = userInfoDAO.getUser(id);
-            System.out.println(user.id);
+            System.out.println("userdeleteaction"+user);
             return SUCCESS;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -31,5 +30,9 @@ public class UserDeleteAction extends ActionSupport {
 	
 	public void setId(int id) {
 		this.id=id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }

@@ -63,5 +63,34 @@ public class UserInfoDAO {
 		}
 		return dto;
 	}
+	
+	public int deleteUser(int id) throws SQLException {	
+	    String sql = "UPDATE login_user_transaction SET delete_flg = ? WHERE id = ?";
+
+	    int result = 0;
+
+	    try {
+	        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setInt(1, 1);   // delete_flg = 1
+	        preparedStatement.setInt(2, id);  // WHERE id = ?
+
+	        result = preparedStatement.executeUpdate(); // 更新件数が返ってくる
+
+	        System.out.println("更新対象ID: " + id);
+	        System.out.println("更新件数   : " + result);
+
+	        if (result > 0) {
+	            System.out.println("更新成功");
+	        } else {
+	            System.out.println("対象データなし");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        connection.close();
+	    }
+	    return result; // ★ int で返す
+	}
+
 
 }

@@ -14,8 +14,7 @@ public class ListDAO {
 	private DBConnector dbConnector=new DBConnector();
 	private Connection connection=dbConnector.getConnection();
 	
-	public ArrayList<ListDTO> getAllList()
-	throws SQLException{		
+	public ArrayList<ListDTO> getAllList() throws SQLException{		
 		ArrayList<ListDTO> list=new ArrayList<>();
 		String sql="SELECT lut.id,lut.family_name,lut.last_name,lut.family_name_kana,"
 				+ "lut.last_name_kana,lut.mail,git.user_gender,ait.user_authority,fit.flg,"
