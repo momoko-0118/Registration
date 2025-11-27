@@ -10,11 +10,13 @@ public class ListDTO {
 	public String mail;
 	public String password;
 	public String gender;
+	public String userGender;
 	public String postal_code;
 	public String prefecture;
 	public String address_1;
 	public String address_2;
 	public String authority;
+	public String userAuthority;
 	public String deleteFlg;
 	public String registered_time;
 	public String update_time;
@@ -83,6 +85,14 @@ public class ListDTO {
 		this.gender=gender;
 	}
 	
+	public String getUserGender() {
+		return this.userGender;
+	}
+	
+	public void setUserGender(String userGender) {
+		this.userGender=userGender;
+	}
+	
 	public String getPostal_Code() {
 		return this.postal_code;
 	}
@@ -121,6 +131,14 @@ public class ListDTO {
 	
 	public void setAuthority(String authority) {
 		this.authority=authority;
+	}
+	
+	public String getUserAuthority() {
+		return this.userAuthority;
+	}
+	
+	public void setUserAuthority(String userAuthority) {
+		this.userAuthority=userAuthority;
 	}
 	
 	public String getDeleteFlg() {

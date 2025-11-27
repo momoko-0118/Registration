@@ -109,7 +109,7 @@
 								<td><s:property value="update_time"/></td>
 								<td>
 									<s:form action="UserUpdateAction">
-										<input type="hidden" value="<s:property value='id'/>" />
+										<input type="hidden" name="id" value="<s:property value='id'/>" />
 										<s:submit value="更新"/>
 									</s:form>
 								</td>

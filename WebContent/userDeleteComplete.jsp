@@ -77,9 +77,11 @@
 				<p>UserDeleteComplete</p>
 			</div>
 			<div>
-				<h3><s:if test="message !=''">
-										<s:property value="message" escape="false"/>
-									</s:if></h3>
+				<h3>
+					<s:if test="message !=''">
+						<s:property value="message" escape="false"/>
+					</s:if>
+				</h3>
 			</div>
 			<s:form method="post" action="GoHomeAction">
 				<s:submit value="TOPページに戻る"/>

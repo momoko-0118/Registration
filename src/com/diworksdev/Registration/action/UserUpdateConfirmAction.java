@@ -1,5 +1,406 @@
 package com.diworksdev.Registration.action;
 
-public class UserUpdateConfirmAction {
+import java.util.Arrays;
+import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UserUpdateConfirmAction extends ActionSupport implements SessionAware{
+
+	private int id;
+	private String familyName;
+	private String lastName;
+	private String familyNameKana;
+	private String lastNameKana;
+	private String mail;
+	private String pass2;
+	private String password;
+	private int gender;
+	private String gen;
+	private String postal_code;
+	private String prefecture;
+	private String address_1;
+	private String address_2;
+	private int authority;
+	private String autho;
+	private int deleteFlg;
+	
+	public Map<String,Object>session;
+	private String errorMessage;
+	private String errorFamilyName;
+	private String errorLastName;
+	private String errorFamilyNameKana;
+	private String errorLastNameKana;
+	private String errorMail;
+	private String errorPass;
+	private String errorGender;
+	private String errorPostalCode;
+	private String errorPrefecture;
+	private String errorAddress1;
+	private String errorAddress2;
+	private String errorAuthority;
+	
+	private String[] pre = {"北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島",
+			"茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川","新潟", "富山",
+			"石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知", "三重",
+	        "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山","鳥取", "島根", "岡山",
+	        "広島", "山口", "徳島", "香川", "愛媛", "高知",
+	        "福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"};
+	public String execute() {
+		String result=SUCCESS;
+		
+		session.put("id",id);
+		
+		if(!(familyName.equals(""))) {
+			session.put("familyName",familyName);
+		}else {
+			setErrorFamilyName("名前（姓）が未入力です");
+			result=ERROR;
+		}
+		if(!(lastName.equals(""))) {
+				session.put("lastName",lastName);
+		}else {
+			setErrorLastName("名前（名）が未入力です");
+			result=ERROR;
+		}
+		if(!(familyNameKana.equals(""))) {
+			session.put("familyNameKana",familyNameKana);
+		}else {
+			setErrorFamilyNameKana("カナ（姓）が未入力です");
+			result=ERROR;
+		}
+		if(!(lastNameKana.equals(""))) {
+				session.put("lastNameKana",lastNameKana);
+		}else {
+			setErrorLastNameKana("カナ（姓）が未入力です");
+			result=ERROR;
+		}
+		if(!(mail.equals(""))) {
+			session.put("mail",mail);
+		}else {
+			setErrorMail("メールアドレスが未入力です");
+			result=ERROR;
+		}
+		
+		if(!(password.equals(""))) {	
+			session.put("password", password); 
+			this.pass2=String.format("%"+password.length()+"s","").replace(' ', '●');
+			System.out.println(password.length());
+			System.out.println(String.format("%"+password.length()+"s",""));
+			session.put("pass2", pass2);
+			System.out.println(pass2);
+		} else {
+		    setErrorPass("パスワードが未入力です");
+		    result = ERROR;
+		}
+		
+		if(gender==0) {
+			// 男
+			this.gen="男";
+			session.put("gender",gender);
+			//session.put("gen",this.gen);
+		}else if(gender==1) {
+			// 女
+			this.gen="女";
+			session.put("gender",gender);
+			//session.put("gen",this.gen);
+		}else {
+			setErrorGender("性別が未入力です");
+			result=ERROR;
+		}
+		
+		if(!(postal_code.equals(""))) {
+				session.put("postal_code",postal_code);
+		}else {
+			setErrorPostalCode("郵便番号が未入力です");
+			result=ERROR;
+		}
+		if(prefecture !=null && Arrays.asList(pre).contains(prefecture)) {
+			session.put("prefecture",prefecture);
+		}else {
+			setErrorPrefecture("住所（都道府県）が未入力です");
+			result=ERROR;
+		}
+		if(!(address_1.equals(""))) {
+				session.put("address_1",address_1);
+		}else {
+			setErrorAddress1("住所（市区町村）が未入力です");
+			result=ERROR;
+		}
+		if(!(address_2.equals(""))) {
+			session.put("address_2",address_2);
+		}else {
+			setErrorAddress2("住所（番地）が未入力です");
+			result=ERROR;
+		}			
+		if(authority==0) {
+			this.autho="一般";
+			session.put("authority",authority);
+		}else if(authority==1){
+			this.autho="管理者";
+			session.put("authority",authority);
+		}else {
+			setErrorAuthority("権限が未入力です");
+			result=ERROR;
+		}
+		System.out.println(session);
+		deleteFlg=0;
+		session.put("deleteFlg",deleteFlg);
+		return result;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id=id;
+	}
+	
+	public String getFamilyName() {
+		return familyName;
+	}
+	
+	public void setFamilyName(String familyName) {
+		this.familyName=familyName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName=lastName;
+	}
+	
+	public String getFamilyNameKana() {
+		return familyNameKana;
+	}
+	
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana=familyNameKana;
+	}
+	
+	public String getLastNameKana() {
+		return lastNameKana;
+	}
+	
+	public void setLastNameKana(String lastNameKana) {
+		this.lastNameKana=lastNameKana;
+	}
+	
+	public String getMail() {
+		return mail;
+	}
+	
+	public void setMail(String mail) {
+		this.mail=mail;
+	}
+	
+	public String getPass2() {
+		return pass2;
+	}
+	
+	public void setPass2(String pass2) {
+		this.pass2=pass2;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password=password;
+	}
+	
+	public int getGender() {
+		return gender;
+	}
+	
+	public void setGender(int gender) {
+		this.gender=gender;
+	}
+	
+	public String getGen() {
+		return gen;
+	}
+	
+	public void setGen(String gen) {
+		this.gen=gen;
+	}
+	
+	public String getPostal_code() {
+		return postal_code;
+	}
+	
+	public void setPostal_code(String postal_code) {
+		this.postal_code=postal_code;
+	}
+	public String getPrefecture() {
+		return prefecture;
+	}
+	
+	public void setPrefecture(String prefecture) {
+		this.prefecture=prefecture;
+	}
+	public String getAddress_1() {
+		return address_1;
+	}
+	
+	public void setAddress_1(String address_1) {
+		this.address_1=address_1;
+	}
+	public String getAddress_2() {
+		return address_2;
+	}
+	
+	public void setAddress_2(String address_2) {
+		this.address_2=address_2;
+	}
+	public int getAuthority() {
+		return authority;
+	}
+	
+	public void setAuthority(int authority) {
+		this.authority=authority;
+	}
+	
+	public String getAutho() {
+		return autho;
+	}
+	
+	public void setAutho(String autho) {
+		this.autho=autho;
+	}
+	
+	public int getDeleteFlg() {
+		return deleteFlg;
+	}
+	
+	public void setDeleteFlg(int deleteFlg) {
+		this.deleteFlg=deleteFlg;
+	}
+	
+	public Map<String,Object>getSession(){
+		return session;
+	}
+	
+	@Override
+	public void setSession(Map<String,Object>session) {
+		this.session=session;
+	}
+	
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage=errorMessage;
+	}
+	
+	public String getErrorFamilyName() {
+		return errorFamilyName;
+	}
+	
+	public void setErrorFamilyName(String errorFamilyName) {
+		this.errorFamilyName=errorFamilyName;
+	}
+	
+	public String getErrorLastName() {
+		return errorLastName;
+	}
+	
+	public void setErrorLastName(String errorLastName) {
+		this.errorLastName=errorLastName;
+	}
+	
+	public String getErrorFamilyNameKana() {
+		return errorFamilyNameKana;
+	}
+	
+	public void setErrorFamilyNameKana(String errorFamilyNameKana) {
+		this.errorFamilyNameKana=errorFamilyNameKana;
+	}
+	
+	public String getErrorLastNameKana() {
+		return errorLastNameKana;
+	}
+	
+	public void setErrorLastNameKana(String errorLastNameKana) {
+		this.errorLastNameKana=errorLastNameKana;
+	}
+	
+	public String getErrorMail() {
+		return errorMail;
+	}
+	
+	public void setErrorMail(String errorMail) {
+		this.errorMail=errorMail;
+	}
+	
+	public String getErrorPass() {
+		return errorPass;
+	}
+	
+	public void setErrorPass(String errorPass) {
+		this.errorPass=errorPass;
+	}
+	
+	public String getErrorGender() {
+		return errorGender;
+	}
+	
+	public void setErrorGender(String errorGender) {
+		this.errorGender=errorGender;
+	}
+	
+	public String getErrorPostalCode() {
+		return errorPostalCode;
+	}
+	
+	public void setErrorPostalCode(String errorPostalCode) {
+		this.errorPostalCode=errorPostalCode;
+	}
+	
+	public String getErrorPrefecture() {
+		return errorPrefecture;
+	}
+	
+	public void setErrorPrefecture(String errorPrefecture) {
+		this.errorPrefecture=errorPrefecture;
+	}
+	
+	public String getErrorAddress1() {
+		return errorAddress1;
+	}
+	
+	public void setErrorAddress1(String errorAddress1) {
+		this.errorAddress1=errorAddress1;
+	}
+	
+	public String getErrorAddress2() {
+		return errorAddress2;
+	}
+	
+	public void setErrorAddress2(String errorAddress2) {
+		this.errorAddress2=errorAddress2;
+	}
+	
+	public String getErrorAuthority() {
+		return errorAuthority;
+	}
+	
+	public void setErrorAuthority(String errorAuthority) {
+		this.errorAuthority=errorAuthority;
+	}
+	
+	public String[] getPre() {
+		return pre;
+	}
+	
+	public void setPre(String[] pre) {
+		this.pre=pre;
+	}
 }
