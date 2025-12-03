@@ -32,6 +32,10 @@ public class UserUpdateAction extends ActionSupport {
 		try { 
 			if (familyName == null) { 
 				user = userUpdateDAO.getUser(id); 
+				if ("1".equals(user.getDeleteFlg())) {
+	                addActionError("削除済みアカウント");
+	                return ERROR;
+				}
 			} else { 
 				user = new UserUpdateDTO(); 
 				user.setId(String.valueOf(id)); 

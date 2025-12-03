@@ -18,7 +18,7 @@ public class UserUpdateDAO {
 		UserUpdateDTO dto=new UserUpdateDTO();
 		String sql="SELECT lut.id,lut.family_name,lut.last_name,lut.family_name_kana,"
 				+ "lut.last_name_kana,lut.mail,lut.password,lut.gender,git.user_gender,lut.postal_code,lut.prefecture,"
-				+ "lut.address_1,lut.address_2,lut.authority,ait.user_authority,fit.flg,"
+				+ "lut.address_1,lut.address_2,lut.authority,ait.user_authority,fit.flg,lut.delete_flg,"
 				+ "lut.registered_time,lut.update_time FROM login_user_transaction lut "
 				+ "LEFT JOIN gender_info_transaction git ON lut.gender=git.id "
 				+ "LEFT JOIN authority_info_transaction ait ON lut.authority=ait.id "
@@ -48,6 +48,7 @@ public class UserUpdateDAO {
 				dto.setAddress_2(resultSet.getString("address_2"));
 				dto.setUserAuthority(resultSet.getString("user_authority"));
 				dto.setAuthority(resultSet.getInt("authority"));
+				dto.setDeleteFlg(resultSet.getInt("delete_flg"));
 				System.out.println("更新時の取得");
 				System.out.println(dto.getFamilyName());
 				System.out.println(dto.getLastName());
@@ -71,7 +72,7 @@ public class UserUpdateDAO {
 		UserUpdateDTO dto=new UserUpdateDTO();
 		String sql="SELECT lut.id,lut.family_name,lut.last_name,lut.family_name_kana,"
 				+ "lut.last_name_kana,lut.mail,lut.password,lut.gender,git.user_gender,lut.postal_code,lut.prefecture,"
-				+ "lut.address_1,lut.address_2,lut.authority,ait.user_authority,fit.flg,"
+				+ "lut.address_1,lut.address_2,lut.authority,ait.user_authority,fit.flg,lut.delete_flg,"
 				+ "lut.registered_time,lut.update_time FROM login_user_transaction lut "
 				+ "LEFT JOIN gender_info_transaction git ON lut.gender=git.id "
 				+ "LEFT JOIN authority_info_transaction ait ON lut.authority=ait.id "

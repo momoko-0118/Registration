@@ -17,7 +17,7 @@ public class UserUpdateDTO {
 	public String address_2;
 	public int authority;
 	public String userAuthority;
-	public String deleteFlg;
+	public int deleteFlg;
 	public String registered_time;
 	public String update_time;
 	
@@ -141,11 +141,11 @@ public class UserUpdateDTO {
 		this.userAuthority=userAuthority;
 	}
 	
-	public String getDeleteFlg() {
+	public int getDeleteFlg() {
 		return this.deleteFlg;
 	}
 	
-	public void setDeleteFlg(String deleteFlg) {
+	public void setDeleteFlg(int deleteFlg) {
 		this.deleteFlg=deleteFlg;
 	}
 	

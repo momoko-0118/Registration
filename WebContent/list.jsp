@@ -108,10 +108,15 @@
 								<td><s:property value="registered_time"/></td>
 								<td><s:property value="update_time"/></td>
 								<td>
-									<s:form action="UserUpdateAction">
-										<input type="hidden" name="id" value="<s:property value='id'/>" />
-										<s:submit value="更新"/>
-									</s:form>
+									<s:if test="'有効'.equals(deleteFlg)">
+ 										<s:form action="UserUpdateAction">
+  											<input type="hidden" name="id" value="<s:property value='id'/>" />
+ 											<s:submit value="更新"/>
+										</s:form>
+									</s:if>
+									<s:else>
+										<span>更新不可</span>
+									</s:else>
 								</td>
 								<td>
 									<s:form action="UserDeleteAction" value="id">
@@ -121,6 +126,7 @@
 								</td>
 							</tr>
 						</s:iterator>
+						<s:actionerror/>
 					</table>
 				</s:if>
 				<s:else>
