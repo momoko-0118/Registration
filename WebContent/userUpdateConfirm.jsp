@@ -12,7 +12,7 @@
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<meta name="description" content=""/>
 		<meta name="keywords" content=""/>
-		<title>UserCreateConfirm画面</title>
+		<title>UserUpdateConfirm画面</title>
 		
 		<style type="text/css">
 		/*=====TAG LAYOUT=====*/
@@ -179,11 +179,25 @@
 								</span>
 							</td>
 						</tr>
-						<input type="hidden" name="id" value="<s:property value='id'/>" />				
+						<input type="hidden" name="id" value="<s:property value='id'/>" />
 						<s:submit value="登録する"/>
 					</s:form>
-					<s:form method="post" action="UserUpdateConfirmAction">
-						<input type="button" value="前に戻る"/>
+					<s:form method="post" action="UserUpdateAction">
+						<input type="hidden" name="familyName" value="<s:property value='familyName'/>" />
+    					<input type="hidden" name="lastName" value="<s:property value='lastName'/>" />
+    					<input type="hidden" name="familyNameKana" value="<s:property value='familyNameKana'/>" />
+					    <input type="hidden" name="lastNameKana" value="<s:property value='lastNameKana'/>" />
+					    <input type="hidden" name="mail" value="<s:property value='mail'/>" />
+					    <input type="hidden" name="password" value="<s:property value='pass2'/>" />
+					    <input type="hidden" name="gender" value="<s:property value='gender'/>" />
+					    <input type="hidden" name="postal_code" value="<s:property value='postal_code'/>" />
+					    <input type="hidden" name="prefecture" value="<s:property value='prefecture'/>" />
+					    <input type="hidden" name="address_1" value="<s:property value='address_1'/>" />
+					    <input type="hidden" name="address_2" value="<s:property value='address_2'/>" />
+					    <input type="hidden" name="authority" value="<s:property value='authority'/>" />
+					    <input type="hidden" name="id" value="<s:property value='id'/>" />
+
+						<s:submit value="前に戻る"/>
 					</s:form>
 				</table>
 			</div>

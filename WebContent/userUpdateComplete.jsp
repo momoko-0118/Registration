@@ -12,7 +12,7 @@
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<meta name="description" content=""/>
 		<meta name="keywords" content=""/>
-		<title>List画面</title>
+		<title>UserUpdateComplete画面</title>
 		
 		<style type="text/css">
 		/*=======TAG LAYOUT=======*/

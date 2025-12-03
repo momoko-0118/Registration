@@ -11,7 +11,7 @@
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<meta name="description" content=""/>
 		<meta name="keywords" content=""/>
-		<title>UserCreate画面</title>
+		<title>UserUpdate画面</title>
 		
 		<style type="text/css">
 		/*=====TAG LAYOUT=====*/
@@ -250,6 +250,9 @@
 						</s:iterator>
 						<input type="hidden" name="id" value="<s:property value='id'/>" />
 						<s:submit value="確認する"/>
+					</s:form>
+					<s:form method="post" action="ListAction">
+						<s:submit value="前に戻る"/>
 					</s:form>
 				</table>
 			</div>

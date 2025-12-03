@@ -32,7 +32,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 		}
 		System.out.println("idの出力" + session.get("id"));
 		boolean data=UserInfoDAO.updateUser(
-				session.get("familyName").toString(),
+				session.get("familyName").toString(),//sessionに保存した情報を取り出してupdateUserに渡している
 				session.get("lastName").toString(),
 				session.get("familyNameKana").toString(),
 				session.get("lastNameKana").toString(),
