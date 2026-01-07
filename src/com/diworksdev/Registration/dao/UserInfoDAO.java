@@ -179,4 +179,63 @@ public class UserInfoDAO {
 			return false;
 		}
 	}
+	
+	private String sqlWithoutPassword="UPDATE login_user_transaction SET family_name = ?,last_name =?,family_name_kana = ?,last_name_kana = ?,"
+			+ "mail = ?,gender = ?,postal_code = ?,prefecture = ?,address_1 = ?,address_2 = ?,authority = ?,"
+			+ "delete_flg = ?,update_time = ? WHERE id = ?";
+	public boolean updateUserWithoutPassword(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,
+			String gender,String postal_code,String prefecture,String address_1,String address_2,String authority,String deleteFlg,String id) {
+		try {
+			PreparedStatement preparedStatement=connection.prepareStatement(sqlWithoutPassword);
+			preparedStatement.setString(1,familyName);
+			preparedStatement.setString(2,lastName);
+			preparedStatement.setString(3,familyNameKana);
+			preparedStatement.setString(4,lastNameKana);
+			preparedStatement.setString(5,mail);
+			preparedStatement.setString(6,gender);
+			preparedStatement.setString(7,postal_code);
+			preparedStatement.setString(8,prefecture);
+			preparedStatement.setString(9,address_1);
+			preparedStatement.setString(10,address_2);
+			preparedStatement.setString(11,authority);
+			preparedStatement.setString(12,deleteFlg);
+			preparedStatement.setString(13,dateUtil.getDate());
+			preparedStatement.setString(14,id);
+			preparedStatement.execute();			
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	private String sqlWithPassword="UPDATE login_user_transaction SET family_name = ?,last_name =?,family_name_kana = ?,last_name_kana = ?,"
+			+ "mail = ?,password = ?,gender = ?,postal_code = ?,prefecture = ?,address_1 = ?,address_2 = ?,authority = ?,"
+			+ "delete_flg = ?,update_time = ? WHERE id = ?";
+	public boolean updateUserWithPassword(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String password,
+			String gender,String postal_code,String prefecture,String address_1,String address_2,String authority,String deleteFlg,String id) {
+		try {
+			PreparedStatement preparedStatement=connection.prepareStatement(sqlWithPassword);
+			preparedStatement.setString(1,familyName);
+			preparedStatement.setString(2,lastName);
+			preparedStatement.setString(3,familyNameKana);
+			preparedStatement.setString(4,lastNameKana);
+			preparedStatement.setString(5,mail);
+			preparedStatement.setString(6,password);
+			preparedStatement.setString(7,gender);
+			preparedStatement.setString(8,postal_code);
+			preparedStatement.setString(9,prefecture);
+			preparedStatement.setString(10,address_1);
+			preparedStatement.setString(11,address_2);
+			preparedStatement.setString(12,authority);
+			preparedStatement.setString(13,deleteFlg);
+			preparedStatement.setString(14,dateUtil.getDate());
+			preparedStatement.setString(15,id);
+			preparedStatement.execute();			
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

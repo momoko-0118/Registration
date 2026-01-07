@@ -16,44 +16,65 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	
 	private String errorMessage;
 	private UserInfoDAO UserInfoDAO=new UserInfoDAO();
+	private int id;
 	
 	public String execute() throws SQLException{
+		
+		session.put("id",id);
+		
+		boolean data;
+		if (session.get("password") == null) {
+	        // パスワード変更なし → password列を更新しないSQLへ
+	        data = UserInfoDAO.updateUserWithoutPassword(
+	            session.get("familyName").toString(),
+	            session.get("lastName").toString(),
+	            session.get("familyNameKana").toString(),
+	            session.get("lastNameKana").toString(),
+	            session.get("mail").toString(),
+	            session.get("gender").toString(),
+	            session.get("postal_code").toString(),
+	            session.get("prefecture").toString(),
+	            session.get("address_1").toString(),
+	            session.get("address_2").toString(),
+	            session.get("authority").toString(),
+	            session.get("deleteFlg").toString(),
+	            session.get("id").toString()
+	        );
+	    } else {
+	    	MessageDigest sha256;
+			try {
+				sha256 = MessageDigest.getInstance("SHA-256");
+				byte[] password = sha256.digest("password".getBytes());			
+				System.out.println(sha256.digest("pass".getBytes()));
+				System.out.println(password);
+				session.put("password",password);
 				
-		MessageDigest sha256;
-		try {
-			sha256 = MessageDigest.getInstance("SHA-256");
-			byte[] password = sha256.digest("pass".getBytes());			
-			System.out.println(sha256.digest("pass".getBytes()));
-			System.out.println(password);
-			session.put("password",password);
-			
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		System.out.println("idの出力" + session.get("id"));
-		boolean data=UserInfoDAO.updateUser(
-				session.get("familyName").toString(),//sessionに保存した情報を取り出してupdateUserに渡している
-				session.get("lastName").toString(),
-				session.get("familyNameKana").toString(),
-				session.get("lastNameKana").toString(),
-				session.get("mail").toString(),
-				session.get("password").toString(),
-				session.get("gender").toString(),
-				session.get("postal_code").toString(),
-				session.get("prefecture").toString(),
-				session.get("address_1").toString(),
-				session.get("address_2").toString(),
-				session.get("authority").toString(),
-				session.get("deleteFlg").toString(),
-				session.get("id").toString()
-				);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+	        data = UserInfoDAO.updateUserWithPassword(
+	            session.get("familyName").toString(),
+	            session.get("lastName").toString(),
+	            session.get("familyNameKana").toString(),
+	            session.get("lastNameKana").toString(),
+	            session.get("mail").toString(),
+	            session.get("password").toString(),
+	            session.get("gender").toString(),
+	            session.get("postal_code").toString(),
+	            session.get("prefecture").toString(),
+	            session.get("address_1").toString(),
+	            session.get("address_2").toString(),
+	            session.get("authority").toString(),
+	            session.get("deleteFlg").toString(),
+	            session.get("id").toString()
+	        );
+	    }
 
-		String result = SUCCESS;
-		if(!data) {
-			result=ERROR;
-			setErrorMessage("エラーが発生したためアカウント登録できません。");
-		}
-		return result;				
+	    if (!data) {
+	        setErrorMessage("エラーが発生したためアカウント登録できません。");
+	        return ERROR;
+	    }
+	    return SUCCESS;
 	}
 	
 	public String getPassword() {
@@ -61,6 +82,14 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	}
 	
 	public void setPassword(String password) {
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getErrorMessage() {

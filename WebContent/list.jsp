@@ -119,10 +119,15 @@
 									</s:else>
 								</td>
 								<td>
-									<s:form action="UserDeleteAction" value="id">
-										<input type="hidden" name="id" value="<s:property value='id'/>" />
-										<s:submit value="削除"/>
-									</s:form>
+									<s:if test="'有効'.equals(deleteFlg)">
+ 										<s:form action="UserDeleteAction" value="id">
+  											<input type="hidden" name="id" value="<s:property value='id'/>" />
+ 											<s:submit value="削除"/>
+										</s:form>
+									</s:if>
+									<s:else>
+										<span>更新不可</span>
+									</s:else>
 								</td>
 							</tr>
 						</s:iterator>

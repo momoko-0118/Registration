@@ -84,18 +84,17 @@ public class UserUpdateConfirmAction extends ActionSupport implements SessionAwa
 			result=ERROR;
 		}
 		
-		if(!(password.equals(""))) {	
-			session.put("password", password); 
-			this.pass2=String.format("%"+password.length()+"s","").replace(' ', '●');
-			System.out.println(password.length());
+		if (password != null && !password.equals("")) {	
+		    session.put("password", password);
+		    this.pass2 = String.format("%" + password.length() + "s", "").replace(' ', '●');
+		    System.out.println(password.length());
 			System.out.println(String.format("%"+password.length()+"s",""));
-			session.put("pass2", pass2);
-			System.out.println(pass2);
+		    session.put("pass2", pass2);
+		    System.out.println(pass2);
 		} else {
-		    setErrorPass("パスワードが未入力です");
-		    result = ERROR;
+		    // パスワード未入力 ⇒ 「変更なし」と表示したい
+		    this.pass2 = "変更なし";
 		}
-		
 		if(gender==0) {
 			// 男
 			this.gen="男";

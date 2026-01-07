@@ -151,7 +151,7 @@
 									</span>
 								</td>
 								<td>
-									<input type="password" name="password" value="<s:property value='%{password}'/>" maxlength="10" pattern="[a-zA-Z0-9]*"/>
+									<input type="password" name="password" maxlength="10" pattern="[a-zA-Z0-9]*"/>
 								</td>
 							</tr>
 							<tr>

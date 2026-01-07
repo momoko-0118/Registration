@@ -120,7 +120,12 @@
 								<label>パスワード</label>
 							</td>
 							<td>
-								<s:property value="pass2" escape="false"/>
+								<s:if test="pass2 == null || pass2 == ''">
+									変更なし
+								</s:if>
+								<s:else>
+									<s:property value="pass2"/>
+								</s:else>
 							</td>
 						</tr>
 						<tr id="box">
