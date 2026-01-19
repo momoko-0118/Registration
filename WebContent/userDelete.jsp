@@ -127,7 +127,7 @@
 										<label>パスワード</label>
 									</td>
 									<td>
-										<s:property value="password" escape="false"/>
+										表示されません
 									</td>
 								</tr>
 								<tr id="box">
@@ -135,7 +135,7 @@
 										<label>性別</label>
 									</td>
 									<td>
-										<s:property value="gender" escape="false"/>
+										<s:property value="userGender" escape="false"/>
 									</td>
 								</tr>
 								<tr id="box">
@@ -175,7 +175,7 @@
 										<label>アカウント権限</label>
 									</td>
 									<td>
-										<s:property value="authority" escape="false"/>
+										<s:property value="userAuthority" escape="false"/>
 									</td>
 									<td>
 									<br>
