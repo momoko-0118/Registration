@@ -14,9 +14,9 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 
 	private Map<String,Object> session;
 	
-	private String errorMessage;
-	private UserInfoDAO UserInfoDAO=new UserInfoDAO();
+	private UserInfoDAO userInfoDAO=new UserInfoDAO();
 	private int id;
+	private String message;
 	
 	public String execute() throws SQLException{
 		
@@ -25,7 +25,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 		boolean data;
 		if (session.get("password") == null) {
 	        // パスワード変更なし → password列を更新しないSQLへ
-	        data = UserInfoDAO.updateUserWithoutPassword(
+	        data = userInfoDAO.updateUserWithoutPassword(
 	            session.get("familyName").toString(),
 	            session.get("lastName").toString(),
 	            session.get("familyNameKana").toString(),
@@ -52,7 +52,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
-	        data = UserInfoDAO.updateUserWithPassword(
+	        data = userInfoDAO.updateUserWithPassword(
 	            session.get("familyName").toString(),
 	            session.get("lastName").toString(),
 	            session.get("familyNameKana").toString(),
@@ -70,11 +70,20 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	        );
 	    }
 
-	    if (!data) {
-	        setErrorMessage("エラーが発生したためアカウント登録できません。");
-	        return ERROR;
-	    }
-	    return SUCCESS;
+		try {
+            int result = userInfoDAO.deleteUser(id);
+
+            if (result > 0) {
+            	setMessage("更新完了しました");
+            } else {
+            	setMessage("対象データなし");
+            }
+            return SUCCESS;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            setMessage("エラーが発生したためアカウント登録できません。");
+            return ERROR;
+        }
 	}
 	
 	public String getPassword() {
@@ -92,12 +101,12 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 		this.id = id;
 	}
 	
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getMessage() {
+		return message;
 	}
 	
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage=errorMessage;
+	public void setMessage(String message) {
+		this.message=message;
 	}
 	
 	@Override
