@@ -41,13 +41,20 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	            session.get("id").toString()
 	        );
 	    } else {
-	    	MessageDigest sha256;
-			try {
+	    	String password = session.get("password").toString();
+			
+			MessageDigest sha256;
+			String pass = "";
+	    	try {
 				sha256 = MessageDigest.getInstance("SHA-256");
-				byte[] password = sha256.digest("password".getBytes());			
-				System.out.println(sha256.digest("pass".getBytes()));
-				System.out.println(password);
-				session.put("password",password);
+				byte[] hash = sha256.digest(password.getBytes());	
+				StringBuilder sb = new StringBuilder();
+				for(byte b : hash){
+				    sb.append(String.format("%02x", b));
+				}
+				pass = sb.toString();
+				System.out.println(sha256.digest(password.getBytes()));
+				System.out.println(pass);
 				
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
@@ -58,7 +65,7 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	            session.get("familyNameKana").toString(),
 	            session.get("lastNameKana").toString(),
 	            session.get("mail").toString(),
-	            session.get("password").toString(),
+	            pass,
 	            session.get("gender").toString(),
 	            session.get("postal_code").toString(),
 	            session.get("prefecture").toString(),
@@ -70,20 +77,12 @@ public class UserUpdateCompleteAction extends ActionSupport implements SessionAw
 	        );
 	    }
 
-		try {
-            int result = userInfoDAO.deleteUser(id);
-
-            if (result > 0) {
+            if (data) {
             	setMessage("更新完了しました");
-            } else {
-            	setMessage("対象データなし");
+            	return SUCCESS;
             }
-            return SUCCESS;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            setMessage("エラーが発生したためアカウント登録できません。");
+            setMessage("エラーが発生したためアカウント更新できません。");
             return ERROR;
-        }
 	}
 	
 	public String getPassword() {

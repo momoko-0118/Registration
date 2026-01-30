@@ -18,14 +18,21 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 	private RegistCompleteDAO RegistCompleteDAO=new RegistCompleteDAO();
 	
 	public String execute() throws SQLException{
+		
+		String password = session.get("password").toString();
 				
 		MessageDigest sha256;
+		String pass = "";
 		try {
 			sha256 = MessageDigest.getInstance("SHA-256");
-			byte[] password = sha256.digest("pass".getBytes());			
-			System.out.println(sha256.digest("pass".getBytes()));
-			System.out.println(password);
-			session.put("password",password);
+			byte[] hash = sha256.digest(password.getBytes());	
+			StringBuilder sb = new StringBuilder();
+			for(byte b : hash){
+			    sb.append(String.format("%02x", b));
+			}
+			pass = sb.toString();
+			System.out.println(sha256.digest(password.getBytes()));
+			System.out.println(pass);
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -36,7 +43,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware{
 				session.get("familyNameKana").toString(),
 				session.get("lastNameKana").toString(),
 				session.get("mail").toString(),
-				session.get("password").toString(),
+				pass,
 				session.get("gender").toString(),
 				session.get("postalCode").toString(),
 				session.get("prefecture").toString(),

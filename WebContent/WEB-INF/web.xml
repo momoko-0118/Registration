@@ -6,7 +6,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 <display-name>Registration</display-name>
 
 <welcome-file-list>
-	<welcome-file>home.jsp</welcome-file>
+	<welcome-file>login.jsp</welcome-file>
 </welcome-file-list>
 
 <filter>

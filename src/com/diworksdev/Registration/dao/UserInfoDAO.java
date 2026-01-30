@@ -153,7 +153,7 @@ public class UserInfoDAO {
 			+ "mail = ?,password = ?,gender = ?,postal_code = ?,prefecture = ?,address_1 = ?,address_2 = ?,authority = ?,"
 			+ "delete_flg = ?,update_time = ? WHERE id = ?";
 
-	public boolean updateUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String password,
+	public boolean updateCompleteUser(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,String password,
 			String gender,String postal_code,String prefecture,String address_1,String address_2,String authority,String deleteFlg,String id) {
 		try {
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
@@ -183,6 +183,7 @@ public class UserInfoDAO {
 	private String sqlWithoutPassword="UPDATE login_user_transaction SET family_name = ?,last_name =?,family_name_kana = ?,last_name_kana = ?,"
 			+ "mail = ?,gender = ?,postal_code = ?,prefecture = ?,address_1 = ?,address_2 = ?,authority = ?,"
 			+ "delete_flg = ?,update_time = ? WHERE id = ?";
+	
 	public boolean updateUserWithoutPassword(String familyName,String lastName,String familyNameKana,String lastNameKana,String mail,
 			String gender,String postal_code,String prefecture,String address_1,String address_2,String authority,String deleteFlg,String id) {
 		try {

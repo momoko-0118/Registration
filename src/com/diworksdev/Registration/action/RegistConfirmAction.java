@@ -82,7 +82,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 		}
 		
 		if(!(pass.equals(""))) {	
-			session.put("pass", pass); 
+			session.put("password", pass); 
 			this.pass2=String.format("%"+pass.length()+"s","").replace(' ', '●');
 			System.out.println(pass.length());
 			System.out.println(String.format("%"+pass.length()+"s",""));
