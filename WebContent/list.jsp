@@ -47,7 +47,7 @@
 		
 			#main{
 				width:100%;
-				height:500px;
+				height:800px;
 				text-align:center;
 			}
 		
@@ -77,69 +77,74 @@
 				<p>List</p>
 			</div>
 			<div>
-				<s:if test="users">
-					<h3>アカウント一覧画面</h3>
-					<table border="1">
-						<tr>
-							<th>ID</th>
-							<th>名前（姓）</th>
-							<th>名前（名）</th>
-							<th>カナ（姓）</th>
-							<th>カナ（名）</th>
-							<th>メールアドレス</th>
-							<th>性別</th>
-							<th>アカウント権限</th>
-							<th>削除フラグ</th>
-							<th>登録日時</th>
-							<th>更新日時</th>
-							<th colspan="2">操作</th>
-						</tr>
-						<s:iterator value="users">
+				<s:if test="#session.authority == 1">
+					<s:if test="users">
+						<h3>アカウント一覧画面</h3>
+						<table border="1">
 							<tr>
-								<td><s:property value="id"/></td>
-								<td><s:property value="familyName"/></td>
-								<td><s:property value="lastName"/></td>
-								<td><s:property value="familyNameKana"/></td>
-								<td><s:property value="lastNameKana"/></td>
-								<td><s:property value="mail"/></td>
-								<td><s:property value="gender"/></td>
-								<td><s:property value="authority"/></td>
-								<td><s:property value="deleteFlg"/></td>
-								<td><s:property value="registered_time"/></td>
-								<td><s:property value="update_time"/></td>
-								<td>
-									<s:if test="'有効'.equals(deleteFlg)">
- 										<s:form action="UserUpdateAction">
-  											<input type="hidden" name="id" value="<s:property value='id'/>" />
- 											<s:submit value="更新"/>
-										</s:form>
-									</s:if>
-									<s:else>
-										<span>更新不可</span>
-									</s:else>
-								</td>
-								<td>
-									<s:if test="'有効'.equals(deleteFlg)">
- 										<s:form action="UserDeleteAction" value="id">
-  											<input type="hidden" name="id" value="<s:property value='id'/>" />
- 											<s:submit value="削除"/>
-										</s:form>
-									</s:if>
-									<s:else>
-										<span>更新不可</span>
-									</s:else>
-								</td>
+								<th>ID</th>
+								<th>名前（姓）</th>
+								<th>名前（名）</th>
+								<th>カナ（姓）</th>
+								<th>カナ（名）</th>
+								<th>メールアドレス</th>
+								<th>性別</th>
+								<th>アカウント権限</th>
+								<th>削除フラグ</th>
+								<th>登録日時</th>
+								<th>更新日時</th>
+								<th colspan="2">操作</th>
 							</tr>
-						</s:iterator>
-						<s:actionerror/>
-					</table>
+							<s:iterator value="users">
+								<tr>
+									<td><s:property value="id"/></td>
+									<td><s:property value="familyName"/></td>
+									<td><s:property value="lastName"/></td>
+									<td><s:property value="familyNameKana"/></td>
+									<td><s:property value="lastNameKana"/></td>
+									<td><s:property value="mail"/></td>
+									<td><s:property value="gender"/></td>
+									<td><s:property value="authority"/></td>
+									<td><s:property value="deleteFlg"/></td>
+									<td><s:property value="registered_time"/></td>
+									<td><s:property value="update_time"/></td>
+									<td>
+										<s:if test="'有効'.equals(deleteFlg)">
+	 										<s:form action="UserUpdateAction">
+	  											<input type="hidden" name="id" value="<s:property value='id'/>" />
+	 											<s:submit value="更新"/>
+											</s:form>
+										</s:if>
+										<s:else>
+											<span>更新不可</span>
+										</s:else>
+									</td>
+									<td>
+										<s:if test="'有効'.equals(deleteFlg)">
+	 										<s:form action="UserDeleteAction" value="id">
+	  											<input type="hidden" name="id" value="<s:property value='id'/>" />
+	 											<s:submit value="削除"/>
+											</s:form>
+										</s:if>
+										<s:else>
+											<span>更新不可</span>
+										</s:else>
+									</td>
+								</tr>
+							</s:iterator>
+							<s:actionerror/>
+						</table>
+					</s:if>
+					<s:else>
+						<h3>情報はありません。</h3>
+					</s:else>
+					<s:if test="session.message !=null">
+						<h3><s:property value="message"/></h3>
+					</s:if>
 				</s:if>
 				<s:else>
-					<h3>情報はありません。</h3>
+					エラーが発生しました
 				</s:else>
-				<s:if test="session.message !=null">
-					<h3><s:property value="message"/></h3>
-				</s:if>
 			</div>
 		</div>
 		<div id="footer">

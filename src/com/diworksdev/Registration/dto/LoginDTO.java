@@ -5,6 +5,7 @@ public class LoginDTO {
 	private String id;
     private String mail;
     private String password;
+    private int authority;
     private boolean loginFlg = false;
     
     public String getId() {
@@ -29,6 +30,14 @@ public class LoginDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public int getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(int authority) {
+        this.authority = authority;
     }
 
     public boolean getLoginFlg() {

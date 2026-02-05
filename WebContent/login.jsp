@@ -79,7 +79,7 @@
 								<label>メールアドレス</label>
 							</td>
 							<td>
-								<s:textfield name="loginMail"/>
+								<s:textfield name="loginMail" maxlength="100"/>
 							</td>
 						</tr>
 						<tr>
@@ -87,7 +87,7 @@
 								<label>パスワード</label>
 							</td>
 							<td>
-								<s:password name="loginPassword"/>
+								<s:password name="loginPassword" maxlength="10"/>
 							</td>
 						</tr>
 						<tr>

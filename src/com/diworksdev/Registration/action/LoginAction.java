@@ -52,6 +52,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
         if (loginDTO.getLoginFlg()) {
         	session.put("id", loginid);
+        	session.put("authority", loginDTO.getAuthority());
+        	System.out.println("管理者権限" + loginDTO.getAuthority());
             return SUCCESS;
         }
         setErrorMessage("メールアドレスかパスワードが間違っています");

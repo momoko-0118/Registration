@@ -16,17 +16,20 @@ public class LoginDAO {
 		String sql="SELECT * FROM login_user_transaction where mail=? AND password=?";
 	
 		try{
+			//SQLを実行する準備
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, loginMail);
 			preparedStatement.setString(2, loginPassword);
 			
+			//情報の検索をしてSQLを実行する
 			ResultSet resultSet=preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
 				loginDTO.setId(resultSet.getString("id"));
 				loginDTO.setMail(resultSet.getString("mail"));
 				loginDTO.setPassword(resultSet.getString("password"));
+				loginDTO.setAuthority(resultSet.getInt("authority"));
 				
 				if(resultSet.getString("id")!=null) {
 					loginDTO.setLoginFlg(true);
