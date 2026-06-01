@@ -78,8 +78,45 @@
 			</div>
 			<div>
 				<s:if test="#session.authority == 1">
+					<h3>アカウント一覧画面</h3>
+					<s:form action="SearchListAction">
+						<table border="1">
+							<tr>
+								<td>名前（姓）</td>
+								<td><input type="text" name="familyName" maxlength="100" value="${familyName}"/></td>
+								<td>名前（名）</td>
+								<td><input type="text" name="lastName" maxlength="100" value="${lastName}"/></td>
+							</tr>
+							<tr>
+								<td>カナ（姓）</td>
+								<td><input type="text" name="familyNameKana" maxlength="100" value="${familyNameKana}"/></td>
+								<td>カナ（名）</td>
+								<td><input type="text" name="lastNameKana" maxlength="100" value="${lastNameKana}"/></td>
+							</tr>
+							<tr>
+								<td>メールアドレス</td>
+								<td><input type="text" name="mail" maxlength="100" value="${mail}"/></td>
+								<td>性別</td>
+								<td>
+									<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>checked>男
+									<input type="radio" name="gender" value="1" <s:if test="gender == 1">checked="checked"</s:if>>女
+								</td>
+							</tr>
+							<tr>
+								<td>アカウント権限</td>
+								<td>
+									<select class="dropdown" name="authority">
+										<option value="0">一般</option>
+										<option value="1">管理者</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<s:submit value="検索"/>
+							</tr>
+						</table>
+					</s:form>
 					<s:if test="users">
-						<h3>アカウント一覧画面</h3>
 						<table border="1">
 							<tr>
 								<th>ID</th>
