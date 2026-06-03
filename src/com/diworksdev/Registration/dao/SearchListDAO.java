@@ -24,51 +24,69 @@ public class SearchListDAO {
 	    String familyNameKana = (String)map.get("familyNameKana");
 	    String lastNameKana = (String)map.get("lastNameKana");
 	    String mail= (String)map.get("mail");
-	    //int gender = (int)map.get("gender");
-	    //int authority = (int)map.get("authority");
+	    int gender = (int)map.get("gender");
+	    int authority = (int)map.get("authority");
 	    
-		String sql="SELECT * FROM login_user_transaction";
+	    String sql="SELECT lut.id,lut.family_name,lut.last_name,lut.family_name_kana,"
+				+ "lut.last_name_kana,lut.mail,git.user_gender,ait.user_authority,fit.flg,"
+				+ "lut.registered_time,lut.update_time FROM login_user_transaction lut "
+				+ "LEFT JOIN gender_info_transaction git ON lut.gender=git.id "
+				+ "LEFT JOIN authority_info_transaction ait ON lut.authority=ait.id "
+				+ "LEFT JOIN flg_info_transaction fit ON lut.delete_flg=fit.id "
+				+ "WHERE lut.family_name LIKE ? AND lut.last_name LIKE ? "
+				+ "AND lut.family_name_kana LIKE ? AND lut.last_name_kana LIKE ? "
+				+ "AND lut.mail LIKE ? "
+				+ "ORDER BY lut.registered_time DESC";
+		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		
-		if(familyName != null && !familyName.isEmpty()) {
+		int n = 1;
+		if(familyName.isEmpty()) {
+			preparedStatement.setString(n, "%");
+			n++;
+		}
+		else{
+			preparedStatement.setString(n, "%" + familyName + "%");
+			n++;
+		}
+		if(lastName.isEmpty()) {
+			preparedStatement.setString(n, "%");
+			n++;
+		}
+		else {
+			preparedStatement.setString(n, "%" + lastName + "%");
+			n++;
+		}
+		if(familyNameKana.isEmpty()) {
+			preparedStatement.setString(n, "%");
+			n++;
+		}
+		else {
+			preparedStatement.setString(n, "%" + familyNameKana + "%");
+			n++;
+		}
+		if(lastNameKana.isEmpty()) {
+			preparedStatement.setString(n, "%");
+			n++;
+		}
+		else {
+			preparedStatement.setString(n, "%" + lastNameKana + "%");
+			n++;
+		}
+		if(mail.isEmpty()) {
+			preparedStatement.setString(n, "%");
+			n++;
+		}
+		else {
+			preparedStatement.setString(n, "%" + mail+ "%");
+			n++;
+		}
+		/*if(familyName != null && !familyName.isEmpty()) {
 			sql="SELECT * FROM login_user_transaction where family_name = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, familyName);			
-		}
-		if(lastName != null && !lastName.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where last_name = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, lastName);			
-		}
-		if(familyNameKana != null && !familyNameKana.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where family_name_kana = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, familyNameKana);			
-		}
-		if(lastNameKana != null && !lastNameKana.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where last_name_kana = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, lastNameKana);			
-		}
-		if(mail != null && !mail.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where mail = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, mail);			
-		}
-		/*genderとauthorityの選択が必須になっているが、必須じゃないほうがよさそうでは？要確認
-		if(gender != null && !gender.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where gender = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setInt(1, gender);			
-		}
-		if(mail != null && !mail.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where mail = ?";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, mail);			
 		}*/
 		
 		try {
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			ResultSet resultSet=preparedStatement.executeQuery();
+		    ResultSet resultSet=preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				ListDTO dto=new ListDTO();
