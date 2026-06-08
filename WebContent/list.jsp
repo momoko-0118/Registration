@@ -98,7 +98,8 @@
 								<td><input type="text" name="mail" maxlength="100" value="${mail}"/></td>
 								<td>性別</td>
 								<td>
-									<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>checked>男
+									<input type="radio" checked="checked">未選択
+									<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>>男
 									<input type="radio" name="gender" value="1" <s:if test="gender == 1">checked="checked"</s:if>>女
 								</td>
 							</tr>
@@ -106,6 +107,7 @@
 								<td>アカウント権限</td>
 								<td>
 									<select class="dropdown" name="authority">
+										<option value="2">未選択</option>
 										<option value="0">一般</option>
 										<option value="1">管理者</option>
 									</select>

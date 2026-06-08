@@ -35,7 +35,7 @@ public class SearchListDAO {
 				+ "LEFT JOIN flg_info_transaction fit ON lut.delete_flg=fit.id "
 				+ "WHERE lut.family_name LIKE ? AND lut.last_name LIKE ? "
 				+ "AND lut.family_name_kana LIKE ? AND lut.last_name_kana LIKE ? "
-				+ "AND lut.mail LIKE ? "
+				+ "AND lut.mail LIKE ? AND lut.gender = ? "
 				+ "ORDER BY lut.registered_time DESC";
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		
@@ -80,9 +80,19 @@ public class SearchListDAO {
 			preparedStatement.setString(n, "%" + mail+ "%");
 			n++;
 		}
-		/*if(familyName != null && !familyName.isEmpty()) {
-			sql="SELECT * FROM login_user_transaction where family_name = ?";
-			preparedStatement.setString(1, familyName);			
+		if(gender == 0) {
+			preparedStatement.setInt(n, gender);
+			System.out.println(gender + "男");
+		}
+		else if(gender == 1) {
+			preparedStatement.setInt(n, gender);
+			System.out.println(gender + "女");
+		}
+		/*else {
+			preparedStatement.setInt(n, 1);
+			preparedStatement.setInt(n, 2);
+			System.out.println(gender + "未選択");
+			n++;
 		}*/
 		
 		try {
@@ -102,7 +112,7 @@ public class SearchListDAO {
 				dto.setRegistered_time(resultSet.getString("registered_time"));
 				dto.setUpdate_time(resultSet.getString("update_time"));
 				list.add(dto);
-				System.out.println(dto.getFamilyName());
+				/*System.out.println(dto.getFamilyName());
 				System.out.println(dto.getLastName());
 				System.out.println(dto.getFamilyNameKana());
 				System.out.println(dto.getLastNameKana());
@@ -111,7 +121,7 @@ public class SearchListDAO {
 				System.out.println(dto.getAuthority());
 				System.out.println(dto.getDeleteFlg());
 				System.out.println(dto.getRegistered_time());
-				System.out.println(dto.getUpdate_time());
+				System.out.println(dto.getUpdate_time());*/
 			}
 			}catch(Exception e) {
 			e.printStackTrace();
