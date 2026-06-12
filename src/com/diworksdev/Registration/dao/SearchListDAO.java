@@ -35,7 +35,8 @@ public class SearchListDAO {
 				+ "LEFT JOIN flg_info_transaction fit ON lut.delete_flg=fit.id "
 				+ "WHERE lut.family_name LIKE ? AND lut.last_name LIKE ? "
 				+ "AND lut.family_name_kana LIKE ? AND lut.last_name_kana LIKE ? "
-				+ "AND lut.mail LIKE ? AND lut.gender = ? "
+				+ "AND lut.mail LIKE ? AND (? = 2 OR lut.gender = ?) "
+				+ "AND (? = 2 OR lut.authority = ?) "
 				+ "ORDER BY lut.registered_time DESC";
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		
@@ -83,17 +84,45 @@ public class SearchListDAO {
 		if(gender == 0) {
 			preparedStatement.setInt(n, gender);
 			System.out.println(gender + "男");
+			n++;
+			preparedStatement.setInt(n, gender);
+			n++;
 		}
 		else if(gender == 1) {
 			preparedStatement.setInt(n, gender);
 			System.out.println(gender + "女");
+			n++;
+			preparedStatement.setInt(n, gender);
+			n++;
 		}
-		/*else {
-			preparedStatement.setInt(n, 1);
-			preparedStatement.setInt(n, 2);
+		else {
+			preparedStatement.setInt(n, gender);
 			System.out.println(gender + "未選択");
 			n++;
-		}*/
+			preparedStatement.setInt(n, gender);
+			n++;
+		}
+		if(authority == 0) {
+			preparedStatement.setInt(n, authority);
+			System.out.println(gender + "一般");
+			n++;
+			preparedStatement.setInt(n, authority);
+			n++;
+		}
+		else if(authority == 1) {
+			preparedStatement.setInt(n, authority);
+			System.out.println(authority + "管理者");
+			n++;
+			preparedStatement.setInt(n, authority);
+			n++;
+		}
+		else {
+			preparedStatement.setInt(n, authority);
+			System.out.println(gender + "未選択");
+			n++;
+			preparedStatement.setInt(n, authority);
+			n++;
+		}
 		
 		try {
 		    ResultSet resultSet=preparedStatement.executeQuery();

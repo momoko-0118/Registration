@@ -30,6 +30,7 @@
 			table{
 				text-align:center;
 				margin:0 auto;
+				width:80;
 			}
 			
 		/*========ID LAYOUT=========*/
@@ -98,7 +99,7 @@
 								<td><input type="text" name="mail" maxlength="100" value="${mail}"/></td>
 								<td>性別</td>
 								<td>
-									<input type="radio" checked="checked">未選択
+									<input type="radio" name="gender" value="2" <s:if test="gender == 2">checked="checked"</s:if>checked>未選択
 									<input type="radio" name="gender" value="0" <s:if test="gender == 0">checked="checked"</s:if>>男
 									<input type="radio" name="gender" value="1" <s:if test="gender == 1">checked="checked"</s:if>>女
 								</td>
@@ -107,16 +108,18 @@
 								<td>アカウント権限</td>
 								<td>
 									<select class="dropdown" name="authority">
-										<option value="2">未選択</option>
-										<option value="0">一般</option>
-										<option value="1">管理者</option>
+										<option value="2" <s:if test="authority == 2">selected="selected"</s:if>>未選択</option>
+										<option value="0" <s:if test="authority == 0">selected="selected"</s:if>>一般</option>
+										<option value="1" <s:if test="authority == 1">selected="selected"</s:if>>管理者</option>
 									</select>
 								</td>
-							</tr>
-							<tr>
-								<s:submit value="検索"/>
+								<td colspan="2">
+								</td>
 							</tr>
 						</table>
+						<div style="width:600px; margin:10px auto 0; text-align:right;">
+						    <input type="submit" value="検索">
+						</div>
 					</s:form>
 					<s:if test="users">
 						<table border="1">
