@@ -50,7 +50,7 @@
 		<action name="SearchListAction" 
 		class="com.diworksdev.Registration.action.SearchListAction" 
 		method="execute">
-			<result name="success">list.jsp</result>
+			<result name="success">searchList.jsp</result>
 		</action>
 		
 		<action name="UserUpdateAction" 
