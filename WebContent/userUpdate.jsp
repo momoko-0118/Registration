@@ -74,7 +74,7 @@
 			</div>
 			<div>
 				<table>
-					<s:if test="#session.authority == 1">
+					<s:if test="#session.loginAuthority == 1">
 						<s:form action="UserUpdateConfirmAction">
 							<s:iterator value="user">
 								<tr>

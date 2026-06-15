@@ -21,7 +21,7 @@
             <li> <span id="top">トップ</span></li>
             <li>プロフィール</li>
             <li>D.I.Blogについて</li>
-            <s:if test="#session.authority == 1">
+            <s:if test="#session.loginAuthority == 1">
 	            <li><a href='<s:url action="RegistAction"/>'>アカウント登録</a></li>
 	            <li><a href='<s:url action="ListAction"/>'>アカウント一覧</a> </li> 
             </s:if>          	

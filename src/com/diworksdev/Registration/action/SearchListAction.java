@@ -12,13 +12,13 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchListAction extends ActionSupport{
 	
-	private String familyName;
-    private String lastName;
-    private String familyNameKana;
-    private String lastNameKana;
-    private String mail;
-    private int gender;
-    private int authority;
+	private String familyNameSL;
+    private String lastNameSL;
+    private String familyNameKanaSL;
+    private String lastNameKanaSL;
+    private String mailSL;
+    private int genderSL;
+    private int authoritySL;
 	
 	private List<ListDTO> users = new ArrayList<>();
 	private SearchListDAO searchListDAO = new SearchListDAO();
@@ -27,13 +27,13 @@ public class SearchListAction extends ActionSupport{
     @Override
     public String execute() {
         try {
-            map.put("familyName",familyName);
-            map.put("lastName",lastName);
-            map.put("familyNameKana",familyNameKana);
-            map.put("lastNameKana",lastNameKana);
-            map.put("mail",mail);
-            map.put("gender",gender);
-            map.put("authority",authority);
+            map.put("familyNameSL",familyNameSL);
+            map.put("lastNameSL",lastNameSL);
+            map.put("familyNameKanaSL",familyNameKanaSL);
+            map.put("lastNameKanaSL",lastNameKanaSL);
+            map.put("mailSL",mailSL);
+            map.put("genderSL",genderSL);
+            map.put("authoritySL",authoritySL);
            
             users = searchListDAO.getSearchList(map);
             return SUCCESS;
@@ -47,60 +47,60 @@ public class SearchListAction extends ActionSupport{
         return users;
     }
 
-    public String getFamilyName() {
-        return familyName;
+    public String getFamilyNameSL() {
+        return familyNameSL;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setFamilyNameSL(String familyNameSL) {
+        this.familyNameSL = familyNameSL;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastNameSL() {
+        return lastNameSL;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastNameSL(String lastNameSL) {
+        this.lastNameSL = lastNameSL;
     }
 
-    public String getFamilyNameKana() {
-        return familyNameKana;
+    public String getFamilyNameKanaSL() {
+        return familyNameKanaSL;
     }
 
-    public void setFamilyNameKana(String familyNameKana) {
-        this.familyNameKana = familyNameKana;
+    public void setFamilyNameKanaSL(String familyNameKanaSL) {
+        this.familyNameKanaSL = familyNameKanaSL;
     }
 
-    public String getLastNameKana() {
-        return lastNameKana;
+    public String getLastNameKanaSL() {
+        return lastNameKanaSL;
     }
 
-    public void setLastNameKana(String lastNameKana) {
-        this.lastNameKana = lastNameKana;
+    public void setLastNameKanaSL(String lastNameKanaSL) {
+        this.lastNameKanaSL = lastNameKanaSL;
     }
 
-    public String getMail() {
-        return mail;
+    public String getMailSL() {
+        return mailSL;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMailSL(String mailSL) {
+        this.mailSL = mailSL;
     }
 
-    public int getGender() {
-        return gender;
+    public int getGenderSL() {
+        return genderSL;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
+    public void setGenderSL(int genderSL) {
+        this.genderSL = genderSL;
     }
 
-    public int getAuthority() {
-        return authority;
+    public int getAuthoritySL() {
+        return authoritySL;
     }
 
-    public void setAuthority(int authority) {
-        this.authority = authority;
+    public void setAuthoritySL(int authoritySL) {
+        this.authoritySL = authoritySL;
     }
 
 }

@@ -19,13 +19,13 @@ public class SearchListDAO {
 		ArrayList<ListDTO> list=new ArrayList<>();
 		
 		//<String,Object>でmapを定義しているので型がObjectで返ってくる。なので(String)map.get~で型を指定する
-		String familyName = (String)map.get("familyName");
-	    String lastName = (String)map.get("lastName");
-	    String familyNameKana = (String)map.get("familyNameKana");
-	    String lastNameKana = (String)map.get("lastNameKana");
-	    String mail= (String)map.get("mail");
-	    int gender = (int)map.get("gender");
-	    int authority = (int)map.get("authority");
+		String familyNameSL = (String)map.get("familyNameSL");
+	    String lastNameSL = (String)map.get("lastNameSL");
+	    String familyNameKanaSL = (String)map.get("familyNameKanaSL");
+	    String lastNameKanaSL = (String)map.get("lastNameKanaSL");
+	    String mailSL = (String)map.get("mailSL");
+	    int genderSL = (int)map.get("genderSL");
+	    int authoritySL = (int)map.get("authoritySL");
 	    
 	    String sql="SELECT lut.id,lut.family_name,lut.last_name,lut.family_name_kana,"
 				+ "lut.last_name_kana,lut.mail,git.user_gender,ait.user_authority,fit.flg,"
@@ -41,86 +41,86 @@ public class SearchListDAO {
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
 		
 		int n = 1;
-		if(familyName.isEmpty()) {
+		if(familyNameSL == null || familyNameSL.isEmpty()) {
 			preparedStatement.setString(n, "%");
 			n++;
 		}
 		else{
-			preparedStatement.setString(n, "%" + familyName + "%");
+			preparedStatement.setString(n, "%" + familyNameSL + "%");
 			n++;
 		}
-		if(lastName.isEmpty()) {
+		if(lastNameSL == null || lastNameSL.isEmpty()) {
 			preparedStatement.setString(n, "%");
 			n++;
 		}
 		else {
-			preparedStatement.setString(n, "%" + lastName + "%");
+			preparedStatement.setString(n, "%" + lastNameSL + "%");
 			n++;
 		}
-		if(familyNameKana.isEmpty()) {
+		if(familyNameKanaSL == null ||familyNameKanaSL.isEmpty()) {
 			preparedStatement.setString(n, "%");
 			n++;
 		}
 		else {
-			preparedStatement.setString(n, "%" + familyNameKana + "%");
+			preparedStatement.setString(n, "%" + familyNameKanaSL + "%");
 			n++;
 		}
-		if(lastNameKana.isEmpty()) {
+		if(lastNameKanaSL == null || lastNameKanaSL.isEmpty()) {
 			preparedStatement.setString(n, "%");
 			n++;
 		}
 		else {
-			preparedStatement.setString(n, "%" + lastNameKana + "%");
+			preparedStatement.setString(n, "%" + lastNameKanaSL + "%");
 			n++;
 		}
-		if(mail.isEmpty()) {
+		if(mailSL == null || mailSL.isEmpty()) {
 			preparedStatement.setString(n, "%");
 			n++;
 		}
 		else {
-			preparedStatement.setString(n, "%" + mail+ "%");
+			preparedStatement.setString(n, "%" + mailSL+ "%");
 			n++;
 		}
-		if(gender == 0) {
-			preparedStatement.setInt(n, gender);
-			System.out.println(gender + "男");
+		if(genderSL == 0) {
+			preparedStatement.setInt(n, genderSL);
+			System.out.println(genderSL + "男");
 			n++;
-			preparedStatement.setInt(n, gender);
-			n++;
-		}
-		else if(gender == 1) {
-			preparedStatement.setInt(n, gender);
-			System.out.println(gender + "女");
-			n++;
-			preparedStatement.setInt(n, gender);
+			preparedStatement.setInt(n, genderSL);
 			n++;
 		}
-		else {
-			preparedStatement.setInt(n, gender);
-			System.out.println(gender + "未選択");
+		else if(genderSL == 1) {
+			preparedStatement.setInt(n, genderSL);
+			System.out.println(genderSL + "女");
 			n++;
-			preparedStatement.setInt(n, gender);
-			n++;
-		}
-		if(authority == 0) {
-			preparedStatement.setInt(n, authority);
-			System.out.println(gender + "一般");
-			n++;
-			preparedStatement.setInt(n, authority);
-			n++;
-		}
-		else if(authority == 1) {
-			preparedStatement.setInt(n, authority);
-			System.out.println(authority + "管理者");
-			n++;
-			preparedStatement.setInt(n, authority);
+			preparedStatement.setInt(n, genderSL);
 			n++;
 		}
 		else {
-			preparedStatement.setInt(n, authority);
-			System.out.println(gender + "未選択");
+			preparedStatement.setInt(n, genderSL);
+			System.out.println(genderSL + "未選択");
 			n++;
-			preparedStatement.setInt(n, authority);
+			preparedStatement.setInt(n, genderSL);
+			n++;
+		}
+		if(authoritySL == 0) {
+			preparedStatement.setInt(n, authoritySL);
+			System.out.println(genderSL + "一般");
+			n++;
+			preparedStatement.setInt(n, authoritySL);
+			n++;
+		}
+		else if(authoritySL == 1) {
+			preparedStatement.setInt(n, authoritySL);
+			System.out.println(authoritySL + "管理者");
+			n++;
+			preparedStatement.setInt(n, authoritySL);
+			n++;
+		}
+		else {
+			preparedStatement.setInt(n, authoritySL);
+			System.out.println(genderSL + "未選択");
+			n++;
+			preparedStatement.setInt(n, authoritySL);
 			n++;
 		}
 		

@@ -73,7 +73,7 @@
 				<p>UserCreate</p>
 			</div>
 			<div>
-				<s:if test="#session.authority == 1">
+				<s:if test="#session.loginAuthority == 1">
 					<table>
 						<s:form action="RegistConfirmAction">
 							<tr>

@@ -77,7 +77,7 @@
 				<p>UserDelete</p>
 			</div>
 			<div>
-				<s:if test="#session.authority == 1">
+				<s:if test="#session.loginAuthority == 1">
 					<s:if test="user">
 						<h3>アカウント削除画面</h3>
 						<table>
