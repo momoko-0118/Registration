@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.Registration.dao.RegistConfirmDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class RegistConfirmAction extends ActionSupport implements SessionAware{
+	
+	private RegistConfirmDAO registConfirmDAO = new RegistConfirmDAO();
 
 	private String familyName;
 	private String lastName;
@@ -142,10 +145,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware{
 			setErrorAuthority("権限が未入力です");
 			result=ERROR;
 		}
+		if(result.equals(SUCCESS)) {
+		    if(registConfirmDAO.duplication(mail)) {
+		        setErrorMail("既に登録されているメールアドレスです");
+		        result = ERROR;
+		    }
+		}
 		System.out.println(session);
 		deleteFlg=0;
 		session.put("deleteFlg",deleteFlg);
 		return result;
+		
 	}
 	
 	public String getFamilyName() {

@@ -191,7 +191,14 @@
 								<input type="hidden" name="id" value="<s:property value='id'/>" />				
 								<s:submit value="確認する"/>
 							</s:form>
-							<s:form method="post" action="ListAction">
+							<s:form method="post" action="SearchListAction">
+								<input type="hidden" name="familyNameSL" value="<s:property value='#session.familyNameSL'/>" />
+							    <input type="hidden" name="lastNameSL" value="<s:property value='#session.lastNameSL'/>" />
+							    <input type="hidden" name="familyNameKanaSL" value="<s:property value='#session.familyNameKanaSL'/>" />
+							    <input type="hidden" name="lastNameKanaSL" value="<s:property value='#session.lastNameKanaSL'/>" />
+							    <input type="hidden" name="mailSL" value="<s:property value='#session.mailSL'/>" />
+							    <input type="hidden" name="genderSL" value="<s:property value='#session.genderSL'/>" />
+							    <input type="hidden" name="authoritySL" value="<s:property value='#session.authoritySL'/>" />		
 								<s:submit value="前に戻る"/>
 							</s:form>
 						</table>

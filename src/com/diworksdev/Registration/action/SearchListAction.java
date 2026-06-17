@@ -6,11 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.diworksdev.Registration.dao.SearchListDAO;
 import com.diworksdev.Registration.dto.ListDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SearchListAction extends ActionSupport{
+public class SearchListAction extends ActionSupport implements SessionAware {
 	
 	private String familyNameSL;
     private String lastNameSL;
@@ -19,6 +21,7 @@ public class SearchListAction extends ActionSupport{
     private String mailSL;
     private int genderSL;
     private int authoritySL;
+    private Map<String, Object> session;
 	
 	private List<ListDTO> users = new ArrayList<>();
 	private SearchListDAO searchListDAO = new SearchListDAO();
@@ -27,6 +30,14 @@ public class SearchListAction extends ActionSupport{
     @Override
     public String execute() {
         try {
+        	session.put("familyNameSL", familyNameSL);
+            session.put("lastNameSL", lastNameSL);
+            session.put("familyNameKanaSL", familyNameKanaSL);
+            session.put("lastNameKanaSL", lastNameKanaSL);
+            session.put("mailSL", mailSL);
+            session.put("genderSL", genderSL);
+            session.put("authoritySL", authoritySL);
+            
             map.put("familyNameSL",familyNameSL);
             map.put("lastNameSL",lastNameSL);
             map.put("familyNameKanaSL",familyNameKanaSL);
@@ -41,6 +52,11 @@ public class SearchListAction extends ActionSupport{
             e.printStackTrace();
             return ERROR;
         }
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 
     public List<ListDTO> getUsers() {

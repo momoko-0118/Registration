@@ -84,33 +84,33 @@
 						<table border="1">
 							<tr>
 								<td>名前（姓）</td>
-								<td><input type="text" name="familyNameSL" maxlength="100" value="${familyNameSL}"/></td>
+								<td><input type="text" name="familyNameSL" maxlength="100" value="<s:property value='#session.familyNameSL'/>"/></td>
 								<td>名前（名）</td>
-								<td><input type="text" name="lastNameSL" maxlength="100" value="${lastNameSL}"/></td>
+								<td><input type="text" name="lastNameSL" maxlength="100" value="<s:property value='#session.lastNameSL'/>"/></td>
 							</tr>
 							<tr>
 								<td>カナ（姓）</td>
-								<td><input type="text" name="familyNameKanaSL" maxlength="100" value="${familyNameKanaSL}"/></td>
+								<td><input type="text" name="familyNameKanaSL" maxlength="100" value="<s:property value='#session.familyNameKanaSL'/>"/></td>
 								<td>カナ（名）</td>
-								<td><input type="text" name="lastNameKanaSL" maxlength="100" value="${lastNameKanaSL}"/></td>
+								<td><input type="text" name="lastNameKanaSL" maxlength="100" value="<s:property value='#session.lastNameKanaSL'/>"/></td>
 							</tr>
 							<tr>
 								<td>メールアドレス</td>
-								<td><input type="text" name="mailSL" maxlength="100" value="${mailSL}"/></td>
+								<td><input type="text" name="mailSL" maxlength="100" value="<s:property value='#session.mailSL'/>"/></td>
 								<td>性別</td>
 								<td>
-									<input type="radio" name="genderSL" value="2" <s:if test="genderSL == 2">checked="checked"</s:if>checked>未選択
-									<input type="radio" name="genderSL" value="0" <s:if test="genderSL == 0">checked="checked"</s:if>>男
-									<input type="radio" name="genderSL" value="1" <s:if test="genderSL == 1">checked="checked"</s:if>>女
+									<input type="radio" name="genderSL" value="2" <s:if test="#session.genderSL == 2">checked="checked"</s:if>checked>未選択
+									<input type="radio" name="genderSL" value="0" <s:if test="#session.genderSL == 0">checked="checked"</s:if>>男
+									<input type="radio" name="genderSL" value="1" <s:if test="#session.genderSL == 1">checked="checked"</s:if>>女
 								</td>
 							</tr>
 							<tr>
 								<td>アカウント権限</td>
 								<td>
 									<select class="dropdown" name="authoritySL">
-										<option value="2" <s:if test="authoritySL == 2">selected="selected"</s:if>>未選択</option>
-										<option value="0" <s:if test="authoritySL == 0">selected="selected"</s:if>>一般</option>
-										<option value="1" <s:if test="authoritySL == 1">selected="selected"</s:if>>管理者</option>
+										<option value="2" <s:if test="#session.authoritySL == 2">selected="selected"</s:if>>未選択</option>
+										<option value="0" <s:if test="#session.authoritySL == 0">selected="selected"</s:if>>一般</option>
+										<option value="1" <s:if test="#session.authoritySL == 1">selected="selected"</s:if>>管理者</option>
 									</select>
 								</td>
 								<td colspan="2">
@@ -120,6 +120,9 @@
 						<div style="width:600px; margin:10px auto 0; text-align:right;">
 						    <input type="submit" value="検索">
 						</div>
+					</s:form>
+					<s:form method="post" action="GoHomeAction">
+						<s:submit value="前に戻る"/>
 					</s:form>
 					<s:if test="users">
 						<table border="1">

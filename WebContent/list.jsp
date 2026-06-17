@@ -119,7 +119,10 @@
 						</table>
 						<div style="width:600px; margin:10px auto 0; text-align:right;">
 						    <input type="submit" value="検索">
-						</div>
+						</div>						
+					</s:form>
+					<s:form method="post" action="GoHomeAction">
+						<s:submit value="前に戻る"/>
 					</s:form>
 				</s:if>
 				<s:else>
